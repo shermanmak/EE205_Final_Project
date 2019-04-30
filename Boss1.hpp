@@ -22,6 +22,7 @@ namespace GameEngine
         private:
             GameDataRef _data;
 
+
             sf::Sprite _boss1Sprite;
 
     };

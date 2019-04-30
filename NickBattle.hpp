@@ -3,12 +3,16 @@
 
 #include "DEFINITIONS.hpp"
 #include "Game.hpp"
+#include "string"
 
 namespace GameEngine
 {
-    class NickBattle
+    class NickBattle 
     {
         public:
+
+            NickBattle() {}
+
             NickBattle( GameDataRef data );
 
             ~NickBattle();
@@ -16,12 +20,14 @@ namespace GameEngine
             void Draw();
 
             //Health 
-            void setHealth(int health);
-            int getCurrentHealth();
+           // void setHealth(int health);
+           // std::string getCurrentHealth_string();
+           // int getCurrentHealth();
 
             //Strength
-            void setStrength(int strength);
-            int getCurrentStrength();
+            //void setStrength(int strength);
+            //std::string getCurrentStrength_string();
+            //int getCurrentStrength();
 
             void NickAttackAnimation(float dt);
 
@@ -41,15 +47,22 @@ namespace GameEngine
 
             sf::Vector2i source_charge;
 
+            int battleswon = 0;
+
+            //int nickCurrentHealth;
+
+            //int nickCurrentStrength;
         
         private:
-             GameDataRef _data;
+            GameDataRef _data;
 
             sf::Sprite _nickBattleSprite;
 
             sf::Clock _clock;
-            int CurrentHealth;
-            int CurrentStrength;
+            
+            
+          //  sf::Text _NickHealth;
+          //  sf::Text _NickAttack;
 
     };
 }

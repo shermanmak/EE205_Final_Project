@@ -25,8 +25,8 @@ namespace GameEngine
         this->source.y = WALK_DOWN;
 		_nickSprite.move(0,7);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
-        std::cout << "moved down" << std::endl;
-        std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+       // std::cout << "moved down" << std::endl;
+       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
 
 
 
@@ -38,8 +38,8 @@ namespace GameEngine
         this->source.y = WALK_LEFT;
 		_nickSprite.move(-7,0);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
-        std::cout << "moved left" << std::endl;
-        std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+       // std::cout << "moved left" << std::endl;
+       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
 
 
 
@@ -51,8 +51,8 @@ namespace GameEngine
         this->source.y = WALK_RIGHT;
 		_nickSprite.move(7,0);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
-        std::cout << "moved right" << std::endl;
-        std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+        //std::cout << "moved right" << std::endl;
+        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
 
 
 
@@ -64,8 +64,8 @@ namespace GameEngine
         this->source.y = WALK_UP;
 		_nickSprite.move(0,-7);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
-        std::cout << "moved up" << std::endl;
-        std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+        //std::cout << "moved up" << std::endl;
+        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
 
 
     }
@@ -75,7 +75,7 @@ namespace GameEngine
     {
         this->source.y = WALK_RIGHT;
 		_nickSprite.move(-7,0);
-        std::cout << "Collision Right" << std::endl;
+       // std::cout << "Collision Right" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 
 
@@ -85,7 +85,7 @@ namespace GameEngine
     {
          this->source.y = WALK_LEFT;
 		_nickSprite.move(7,0);
-        std::cout << "Collision Left" << std::endl;
+       // std::cout << "Collision Left" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 
     }
@@ -94,7 +94,7 @@ namespace GameEngine
     {
         this->source.y = WALK_UP;
 		_nickSprite.move(0,7);
-        std::cout << "Collision Up" << std::endl;
+       // std::cout << "Collision Up" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 
     }
@@ -103,7 +103,7 @@ namespace GameEngine
     {
         this->source.y = WALK_DOWN;
 		_nickSprite.move(0,-7);
-        std::cout << "Collision Down" << std::endl;
+        //std::cout << "Collision Down" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 
     }
@@ -144,4 +144,5 @@ namespace GameEngine
             
         }       
     }
+   
 }

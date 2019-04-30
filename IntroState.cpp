@@ -1,4 +1,3 @@
-//allows you to only include the file one time
 #pragma once
 
 #include <sstream>

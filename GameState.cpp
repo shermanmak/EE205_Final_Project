@@ -4,6 +4,7 @@
 #include <iostream>
 #include "GameState.hpp"
 #include "BattleState1.hpp"
+#include "NickBattle.hpp"
 
 namespace GameEngine
 {
@@ -18,7 +19,7 @@ namespace GameEngine
 
 		_background.setTexture(this->_data->assets.GetTexture("Game Background"));
 
-        _data ->assets.LoadTexture("Nick Image", NICK_IMAGE_FILEPATH);
+    _data ->assets.LoadTexture("Nick Image", NICK_IMAGE_FILEPATH);
 
 		_data ->assets.LoadTexture("Boss 1 Image", BOSS_1_IMAGE_FILEPATH);
 
@@ -28,7 +29,7 @@ namespace GameEngine
 
 		_data->assets.LoadTexture("Item 1 Image", ITEM_1_IMAGE_FILEPATH);
 
-    	nick = new Nick(_data);
+    nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
 		npc1 = new NPC1(_data);
@@ -145,8 +146,6 @@ namespace GameEngine
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
 
-		//	this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
-
 		}
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item1->GetSprite()))
@@ -157,7 +156,6 @@ namespace GameEngine
 
 			item1->Obtained();
 
-		//	this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
 
 		}
 

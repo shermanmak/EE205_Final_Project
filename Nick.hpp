@@ -12,7 +12,7 @@ namespace GameEngine
         public:
 
             Nick( GameDataRef data );
-           
+
             ~Nick();
 
             void Draw();
@@ -43,6 +43,9 @@ namespace GameEngine
             sf::Vector2i source;
 
             sf::Vector2f position  = _nickSprite.getPosition();
+        
+           
+
 
         private:
             GameDataRef _data;
@@ -53,6 +56,7 @@ namespace GameEngine
 
             sf::Clock _movementClock;
 
+          
            
     };
 }

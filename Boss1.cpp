@@ -22,7 +22,7 @@ namespace GameEngine
 
     }
 
-     const sf::Sprite &Boss1::GetSprite() const
+    const sf::Sprite &Boss1::GetSprite() const
     {
         return _boss1Sprite;
     }

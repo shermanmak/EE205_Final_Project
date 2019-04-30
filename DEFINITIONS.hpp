@@ -60,3 +60,6 @@
 #define HEAL_BUTTON_FILEPATH "Resources/res/Heal Button.png"
 #define TAUNT_BUTTON_FILEPATH "Resources/res/Taunt Button.png"
 #define CHARGE_BUTTON_FILEPATH "Resources/res/Charge Button.png"
+
+//Status Bar
+#define STATUS_BAR_FILEPATH "Resources/res/Current Status.png"

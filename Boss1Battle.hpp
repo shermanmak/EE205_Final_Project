@@ -3,26 +3,32 @@
 
 #include "DEFINITIONS.hpp"
 #include "Game.hpp"
+#include "string"
 
 namespace GameEngine
 {
     class Boss1Battle
     {
         public:
+           // Boss1Battle(){}
+
             Boss1Battle( GameDataRef data );
 
             ~Boss1Battle();
 
             void Draw();
 
-            //Health 
-            void setHealth(int health);
-            int getCurrentHealth();
+           /* //Health 
+            void bosssetHealth(int health);
+            void bosstakeDamage(int damage);
+            int bossgetCurrentHealth();
+            std::string bossgetCurrentHealth_string();
+            
 
             //Strength
-            void setStrength(int strength);
-            int getCurrentStrength();
-
+            void bosssetStrength(int strength);
+            int bossgetCurrentStrength();
+            std::string bossgetCurrentStrength_string();*/
 
 
            // int RandomAnimationGenerator();
@@ -45,6 +51,10 @@ namespace GameEngine
 
             sf::Vector2i source_charge;
 
+            int bossCurrentHealth;
+            int bossCurrentStrength;
+            int turncount = 0;
+
         
         private:
             GameDataRef _data;
@@ -53,8 +63,10 @@ namespace GameEngine
 
             sf::Clock _clock;
 
-            int CurrentHealth;
-            int CurrentStrength;
+            int Level;
+
+            sf::Text _BossHealth;
+            sf::Text _BossAttack;
 
 
     };

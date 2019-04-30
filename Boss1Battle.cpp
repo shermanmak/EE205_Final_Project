@@ -4,6 +4,7 @@
 
 namespace GameEngine
 {
+
         Boss1Battle::Boss1Battle( GameDataRef data ) : _data( data )
         {
             _boss1BattleSprite.setTexture(this->_data->assets.GetTexture("Boss 1 Battle Image"));
@@ -12,7 +13,33 @@ namespace GameEngine
 
             //set this position if large boss
             _boss1BattleSprite.setPosition(300,0);
+
+           /* //status bar
+            this->_data->assets.LoadFont("Dialogue", DIALOG_FONT_FILEPATH);
+            this->_BossHealth.setFont(this->_data->assets.GetFont("Dialogue"));
+            this->_BossHealth.setColor(sf::Color::Black);
+
+            //sets health to start at 100 at each battle
+            if(this-> turncount == 0)
+                this->bossCurrentHealth = 100;
+
+            std::string health = getCurrentHealth_string();
+            this->_BossHealth.setString(health);
+            this->_BossHealth.setCharacterSize(18);
+            this->_BossHealth.setPosition(165,300);
+
+           this->bossCurrentStrength = 20;
             
+
+            this->_BossAttack.setFont(this->_data->assets.GetFont("Dialogue"));
+            this->_BossAttack.setColor(sf::Color::Black);
+
+            std::string attack = getCurrentStrength_string();
+            this->_BossAttack.setString(attack);
+            this->_BossAttack.setCharacterSize(18);
+            this->_BossAttack.setPosition(165,320);
+
+            */
 
     
         }
@@ -25,6 +52,8 @@ namespace GameEngine
         void Boss1Battle::Draw()
         {
             _data ->window.draw(_boss1BattleSprite);
+            _data ->window.draw(_BossAttack);
+            _data ->window.draw(_BossHealth);
         }
 
         void Boss1Battle::bossAttackAnimation(float dt)
@@ -108,30 +137,59 @@ namespace GameEngine
 
     }
 
-    //Health  setter
+   /* //Health  setter
     void Boss1Battle::setHealth(int health)
     {
-        this -> CurrentHealth = this->CurrentHealth+ health;
-        if(this->CurrentHealth > 100) //hard setting max health to 100
-            this->CurrentHealth = 100;
+        this -> bossCurrentHealth = this->bossCurrentHealth+ health;
+        if(this->bossCurrentHealth > 100) //hard setting max health to 100
+            this->bossCurrentHealth = 100;
     }
     //Health Getter
     int Boss1Battle::getCurrentHealth()
     {
-        return this-> CurrentHealth;
+        return this-> bossCurrentHealth;
+    }
+    //Health Getter string
+    std::string Boss1Battle::getCurrentHealth_string()
+    {
+        int Health =  this-> bossCurrentHealth;
+
+        std::string Health_string = std::to_string(Health);
+
+        return Health_string;
+    
     }
 
     //Strength setter
     void Boss1Battle::setStrength(int strength)
     {
-        this -> CurrentStrength = strength;
+        this -> bossCurrentStrength = strength;
     }
 
     //Strength getter
     int Boss1Battle::getCurrentStrength()
     {
-        return this-> CurrentStrength;
+        return this-> bossCurrentStrength;
+    }
+    //Strength getter string
+    std::string Boss1Battle::getCurrentStrength_string()
+    {
+        int Strength = this-> bossCurrentStrength;
+
+        std::string Attack_string = std::to_string(Strength);
+
+        return Attack_string;
     }
 
+    void Boss1Battle::takeDamage(int damage)
+    {
+        this-> bossCurrentHealth = this -> bossCurrentHealth - damage;
+        std::cout << "DEBUG " << this->bossCurrentHealth << std::endl;
+        std::string health = getCurrentHealth_string();
+        this->_BossHealth.setString(health);
+        this->_BossHealth.setCharacterSize(18);
+        this->_BossHealth.setPosition(165,300);
+
+    }*/
 
 }
