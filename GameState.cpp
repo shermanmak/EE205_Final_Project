@@ -135,7 +135,7 @@ namespace GameEngine
 
 			std::cout << "Go To BattleState1" << std::endl;
 
-		//	this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
+		  this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
 
 		}
 
