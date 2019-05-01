@@ -49,6 +49,7 @@ namespace GameEngine
 		this->_notificationBoss1.setPosition((SCREEN_WIDTH / 2) - (this->_notificationBoss1.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationBoss1.getGlobalBounds().height / 2));
 
 		Boss1Flag = 0;
+		FruitFlag = 0;
 
     }
 
@@ -198,22 +199,27 @@ namespace GameEngine
 		if(FruitFlag)
 		{
 			this->_data->window.draw(this->_notificationFruit);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
+			{
+				FruitFlag = 0;
+			}
+
 	  }
 
-		if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
-		{
-			FruitFlag = 0;
-		}
 
 		if(Boss1Flag)
 		{
 			this->_data->window.draw(this->_notificationBoss1);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationBoss1, sf::Mouse::Left, this->_data->window))
+			{
+				this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
+			}
+			
 		}
 
-		if(this->_data->input.IsSpriteClicked(this->_notificationBoss1, sf::Mouse::Left, this->_data->window))
-		{
-			this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
-		}
+
 
 		this->_data->window.display();
 	}
