@@ -23,6 +23,10 @@
 //Game State
 #define GAME_BACKGROUND_FILEPATH "Resources/res/Game Background.png"
 
+//NPC Functionality
+#define BOSS_NOTIFICATION_FILEPATH "Resources/res/Encountered Goons.png"
+#define NPC_NOTIFICATION_1_FILEPATH "Resources/res/Find My Fruits.png"
+
 //Battle State
 #define GAME_BATTLE_1_BACKGROUND_FILEPATH "Resources/res/Battle Background 1.png"
 #define NICK_ATTACK_ANIMATION_DURATION 0.5f;
