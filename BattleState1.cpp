@@ -123,7 +123,7 @@ namespace GameEngine
 				this->_data->window.close();
                     std::cout << "good-bye" << std::endl;
 			}
-               //attack
+               //*******************************ATTACK***********************
                if (this->_data->input.IsSpriteClicked(this->_AttackButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
@@ -141,14 +141,14 @@ namespace GameEngine
 
                     if(this->bosschoice == 1)
                     {
-                         nicktakedamage(bossCurrentStrength);
+                      //   nicktakedamage(bossCurrentStrength);
                          this-> BossAttackFlag = 1;
                          this-> bossANIMATIONCOUNTER = 50;
                     //     std::cout << "Attack Flag: " <<this->BossAttackFlag << std::endl;
                     }
                     else if(this->bosschoice == 2)
                     {
-                         bossHealHealth(5);
+                      //   bossHealHealth(5);
                          this-> BossHealFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Heal Flag: " <<this->BossHealFlag << std::endl;
@@ -156,98 +156,46 @@ namespace GameEngine
                     }
                     else if(this->bosschoice == 3)
                     {
-                         bossChargeStrength(2);
+                     //    bossChargeStrength(2);
                          this->BossChargeFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Charge Flag: " <<this->BossChargeFlag << std::endl;
                     }
-                    else if(this->bosschoice =4)
+                    else if(this->bosschoice == 4)
                     {
-                         nickgottaunted(2);
+                      //   nickgottaunted(2);
                          this->BossTauntFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Taunt Flag: " <<this->BossTauntFlag << std::endl;
                     }
 
                }
-               //heal
-               if (this->_data->input.IsSpriteClicked(this->_HealButton, sf::Mouse::Left, this->_data->window)&& this->nickANIMATIONCOUNTER <= 0
+               //*************************HEAL************************************
+              else if (this->_data->input.IsSpriteClicked(this->_HealButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Heal button was clicked" << std::endl;
+                    std::cout << "Attack button was clicked" << std::endl;
 
                     this-> nickHEALANIMATEFLAG = 1;
-                    this-> nickANIMATIONCOUNTER = 55;
-
-                    //nick heal damage
+                    this-> nickANIMATIONCOUNTER = 50;
+                    
+                    //deal damage to boss
                     nickHealHealth(10);
-
-
+                    
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
-                    std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
-
-                  if(this->bosschoice == 1)
-                    {
-                         nicktakedamage(bossCurrentStrength);
-                         this-> BossAttackFlag = 1;
-                         this-> bossANIMATIONCOUNTER = 50;
-                    //     std::cout << "Attack Flag: " <<this->BossAttackFlag << std::endl;
-                    }
-                    else if(this->bosschoice == 2)
-                    {
-                         bossHealHealth(5);
-                         this-> BossHealFlag = 1;
-                         this-> bossANIMATIONCOUNTER = 55;
-                    //     std::cout << "Heal Flag: " <<this->BossHealFlag << std::endl;
-
-                    }
-                    else if(this->bosschoice == 3)
-                    {
-                         bossChargeStrength(2);
-                         this->BossChargeFlag = 1;
-                         this-> bossANIMATIONCOUNTER = 55;
-                    //     std::cout << "Charge Flag: " <<this->BossChargeFlag << std::endl;
-                    }
-                    else if(this->bosschoice =4)
-                    {
-                         nickgottaunted(2);
-                         this->BossTauntFlag = 1;
-                         this-> bossANIMATIONCOUNTER = 55;
-                    //     std::cout << "Taunt Flag: " <<this->BossTauntFlag << std::endl;
-                    }
-
-                    
-
-
-               }
-               //charge
-               if (this->_data->input.IsSpriteClicked(this->_ChargeButton, sf::Mouse::Left, this->_data->window)&& this->nickANIMATIONCOUNTER <= 0
-                    && this-> bossANIMATIONCOUNTER <= 0)
-			{
-                    std::cout << "Charge button was clicked" << std::endl;
-
-                    this-> nickCHARGEANIMATEFLAG = 1;
-                    this-> nickANIMATIONCOUNTER = 55;
-
-                    //nick charge 
-                    nickChargeStrength(10);
-
-                    //boss choose random spell
-                    this->bosschoice = bossRandomSpell();
-                    
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
 
                     if(this->bosschoice == 1)
                     {
-                         nicktakedamage(bossCurrentStrength);
+                      //   nicktakedamage(bossCurrentStrength);
                          this-> BossAttackFlag = 1;
                          this-> bossANIMATIONCOUNTER = 50;
                     //     std::cout << "Attack Flag: " <<this->BossAttackFlag << std::endl;
                     }
                     else if(this->bosschoice == 2)
                     {
-                         bossHealHealth(5);
+                      //   bossHealHealth(5);
                          this-> BossHealFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Heal Flag: " <<this->BossHealFlag << std::endl;
@@ -255,45 +203,46 @@ namespace GameEngine
                     }
                     else if(this->bosschoice == 3)
                     {
-                         bossChargeStrength(2);
+                     //    bossChargeStrength(2);
                          this->BossChargeFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Charge Flag: " <<this->BossChargeFlag << std::endl;
                     }
-                    else if(this->bosschoice =4)
+                    else if(this->bosschoice == 4)
                     {
-                         nickgottaunted(2);
+                      //   nickgottaunted(2);
                          this->BossTauntFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Taunt Flag: " <<this->BossTauntFlag << std::endl;
                     }
 
-
                }
-               //taunt
-               if (this->_data->input.IsSpriteClicked(this->_TauntButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
+               //********************CHARGE***************************
+              else if (this->_data->input.IsSpriteClicked(this->_ChargeButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Taunt button was clicked" << std::endl;
+                    std::cout << "Attack button was clicked" << std::endl;
 
-                    this-> nickTAUNTANIMATEFLAG = 1;
-                    this-> nickANIMATIONCOUNTER = 55;
-                    bossgottaunted(10);
-
+                    this-> nickCHARGEANIMATEFLAG = 1;
+                    this-> nickANIMATIONCOUNTER = 50;
+                    
+                    //Charge Strength
+                    nickChargeStrength(nickCurrentStrength);
+                    
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
 
-                   if(this->bosschoice == 1)
+                    if(this->bosschoice == 1)
                     {
-                         nicktakedamage(bossCurrentStrength);
+                      //   nicktakedamage(bossCurrentStrength);
                          this-> BossAttackFlag = 1;
                          this-> bossANIMATIONCOUNTER = 50;
                     //     std::cout << "Attack Flag: " <<this->BossAttackFlag << std::endl;
                     }
                     else if(this->bosschoice == 2)
                     {
-                         bossHealHealth(5);
+                      //   bossHealHealth(5);
                          this-> BossHealFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Heal Flag: " <<this->BossHealFlag << std::endl;
@@ -301,21 +250,68 @@ namespace GameEngine
                     }
                     else if(this->bosschoice == 3)
                     {
-                         bossChargeStrength(2);
+                     //    bossChargeStrength(2);
                          this->BossChargeFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Charge Flag: " <<this->BossChargeFlag << std::endl;
                     }
-                    else if(this->bosschoice =4)
+                    else if(this->bosschoice == 4)
                     {
-                         nickgottaunted(2);
+                      //   nickgottaunted(2);
                          this->BossTauntFlag = 1;
                          this-> bossANIMATIONCOUNTER = 55;
                     //     std::cout << "Taunt Flag: " <<this->BossTauntFlag << std::endl;
                     }
 
+               }
+               //*************TAUNT********************
+             else if (this->_data->input.IsSpriteClicked(this->_TauntButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
+                    && this-> bossANIMATIONCOUNTER <= 0)
+			{
+                    std::cout << "Attack button was clicked" << std::endl;
+
+                    this-> nickTAUNTANIMATEFLAG = 1;
+                    this-> nickANIMATIONCOUNTER = 50;
+                    
+                    //taunt boss
+                    bossgottaunted(nickCurrentStrength);
+                    
+                    //boss choose random spell
+                    this->bosschoice = bossRandomSpell();
+                    std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
+
+                    if(this->bosschoice == 1)
+                    {
+                      //   nicktakedamage(bossCurrentStrength);
+                         this-> BossAttackFlag = 1;
+                         this-> bossANIMATIONCOUNTER = 50;
+                    //     std::cout << "Attack Flag: " <<this->BossAttackFlag << std::endl;
+                    }
+                    else if(this->bosschoice == 2)
+                    {
+                      //   bossHealHealth(5);
+                         this-> BossHealFlag = 1;
+                         this-> bossANIMATIONCOUNTER = 55;
+                    //     std::cout << "Heal Flag: " <<this->BossHealFlag << std::endl;
+
+                    }
+                    else if(this->bosschoice == 3)
+                    {
+                     //    bossChargeStrength(2);
+                         this->BossChargeFlag = 1;
+                         this-> bossANIMATIONCOUNTER = 55;
+                    //     std::cout << "Charge Flag: " <<this->BossChargeFlag << std::endl;
+                    }
+                    else if(this->bosschoice == 4)
+                    {
+                      //   nickgottaunted(2);
+                         this->BossTauntFlag = 1;
+                         this-> bossANIMATIONCOUNTER = 55;
+                    //     std::cout << "Taunt Flag: " <<this->BossTauntFlag << std::endl;
+                    }
 
                }
+           
 
           }
 
@@ -323,14 +319,16 @@ namespace GameEngine
 
      void BattleState1::Update(float dt)
      {
-     
+          //ATTACK ANIMATION
           if(this->nickATTACKANIMATEFLAG == 1)
           {
                if(this->nickANIMATIONCOUNTER > 0)
+               {
                     nickbattle->NickAttackAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-                //    std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
+                   std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
+               }
                if(this->nickANIMATIONCOUNTER <= 0)
                {
                     //this->nickATTACKANIMATEFLAG = 0;
@@ -339,14 +337,14 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-                    //     std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
-                         else if(this->BossHealFlag == 1)
+                         if(this->BossHealFlag == 1)
                               boss1battle->bossHealAnimation(dt);
-                         else if(this->BossChargeFlag == 1)
+                         if(this->BossChargeFlag == 1)
                               boss1battle->bossChargeAnimation(dt);
-                         else if(this->BossTauntFlag == 1)
+                         if(this->BossTauntFlag == 1)
                               boss1battle->bossTauntAnimation(dt);
 
                     }
@@ -354,11 +352,26 @@ namespace GameEngine
                     {
                          boss1battle->bossResetAnimationPosition();
                          this->nickATTACKANIMATEFLAG =0;
-                         this->BossAttackFlag = 0;
-                         this->BossHealFlag = 0;
-                         this->BossChargeFlag = 0;
-                         this->BossTauntFlag = 0;
-
+                         if(this->BossAttackFlag == 1)
+                         {
+                              this->BossAttackFlag = 0;
+                              nicktakedamage(bossCurrentStrength);
+                         }
+                         else if(this->BossHealFlag == 1)
+                         {
+                              this->BossHealFlag = 0;
+                              bossHealHealth(5);
+                         }
+                         else if(this->BossChargeFlag ==1)
+                         {
+                              this->BossChargeFlag = 0;
+                              bossChargeStrength(2);
+                         }
+                         else if(this->BossTauntFlag ==1)
+                         {
+                              this->BossTauntFlag = 0;
+                              nickgottaunted(2);
+                         }
                     }
 
                }
@@ -366,57 +379,79 @@ namespace GameEngine
           }
 
 
-
+          //HEAL ANIMATION
           if(this->nickHEALANIMATEFLAG == 1)
           {
                if(this->nickANIMATIONCOUNTER > 0)
+               {
                     nickbattle->NickHealAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-         //           std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
-
+                    std::cout <<"Nick time Heal: " <<nickANIMATIONCOUNTER << std::endl;
+               }
+                   
                if(this->nickANIMATIONCOUNTER <= 0)
                {
-                    //this->nickATTACKANIMATEFLAG = 0;
+                    //this->nickHEALANIMATEFLAG = 0;
                     nickbattle->NickResetAnimationPosition();
 
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-       //                  std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
-                         else if(this->BossHealFlag == 1)
+                         if(this->BossHealFlag == 1)
                               boss1battle->bossHealAnimation(dt);
-                         else if(this->BossChargeFlag == 1)
+                         if(this->BossChargeFlag == 1)
                               boss1battle->bossChargeAnimation(dt);
-                         else if(this->BossTauntFlag == 1)
+                         if(this->BossTauntFlag == 1)
                               boss1battle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
                          boss1battle->bossResetAnimationPosition();
-                         this->nickATTACKANIMATEFLAG =0;
-                         this->BossAttackFlag = 0;
-                         this->BossHealFlag = 0;
-                         this->BossChargeFlag = 0;
-                         this->BossTauntFlag = 0;
+                         this->nickHEALANIMATEFLAG =0;
+                         if(this->BossAttackFlag == 1)
+                         {
+                              this->BossAttackFlag = 0;
+                              nicktakedamage(bossCurrentStrength);
+                         }
+                         else if(this->BossHealFlag == 1)
+                         {
+                              this->BossHealFlag = 0;
+                              bossHealHealth(5);
+                         }
+                         else if(this->BossChargeFlag ==1)
+                         {
+                              this->BossChargeFlag = 0;
+                              bossChargeStrength(2);
+                         }
+                         else if(this->BossTauntFlag ==1)
+                         {
+                              this->BossTauntFlag = 0;
+                              nickgottaunted(2);
+                         }
                     }
 
                }
 
-
           }
+
+
+          
+
+          //CHARGE ANIMATION
           if(this->nickCHARGEANIMATEFLAG == 1)
           {
-
                if(this->nickANIMATIONCOUNTER > 0)
-                    nickbattle->NickChargeAnimation(dt);
+               {
+                    nickbattle->NickAttackAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-        //            std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
-
+                   std::cout <<"Nick time Charge: " <<nickANIMATIONCOUNTER << std::endl;
+               }
                if(this->nickANIMATIONCOUNTER <= 0)
                {
                     //this->nickATTACKANIMATEFLAG = 0;
@@ -425,39 +460,60 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-       //                  std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
-                         else if(this->BossHealFlag == 1)
+                         if(this->BossHealFlag == 1)
                               boss1battle->bossHealAnimation(dt);
-                         else if(this->BossChargeFlag == 1)
+                         if(this->BossChargeFlag == 1)
                               boss1battle->bossChargeAnimation(dt);
-                         else if(this->BossTauntFlag == 1)
+                         if(this->BossTauntFlag == 1)
                               boss1battle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
                          boss1battle->bossResetAnimationPosition();
-                         this->nickATTACKANIMATEFLAG =0;
-                         this->BossAttackFlag = 0;
-                         this->BossHealFlag = 0;
-                         this->BossChargeFlag = 0;
-                         this->BossTauntFlag = 0;
+                         this->nickCHARGEANIMATEFLAG =0;
+                         if(this->BossAttackFlag == 1)
+                         {
+                              this->BossAttackFlag = 0;
+                              nicktakedamage(bossCurrentStrength);
+                         }
+                         else if(this->BossHealFlag == 1)
+                         {
+                              this->BossHealFlag = 0;
+                              bossHealHealth(5);
+                         }
+                         else if(this->BossChargeFlag ==1)
+                         {
+                              this->BossChargeFlag = 0;
+                              bossChargeStrength(2);
+                         }
+                         else if(this->BossTauntFlag ==1)
+                         {
+                              this->BossTauntFlag = 0;
+                              nickgottaunted(2);
+                         }
                     }
 
                }
 
-          }
+          }  
+                  
+
+     
+
+          //TAUNT ANIMATION
           if(this->nickTAUNTANIMATEFLAG == 1)
           {
-
                if(this->nickANIMATIONCOUNTER > 0)
-                    nickbattle->NickTauntAnimation(dt);
+               {
+                    nickbattle->NickHealAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-       //             std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
-
+                    std::cout <<"Nick time Taunt: " <<nickANIMATIONCOUNTER << std::endl;
+               }
                if(this->nickANIMATIONCOUNTER <= 0)
                {
                     //this->nickATTACKANIMATEFLAG = 0;
@@ -466,37 +522,59 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-       //                  std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
-
-                         std::cout << this->bosschoice << std::endl;
-                        if(this->BossAttackFlag == 1)
+                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                         if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
-                         else if(this->BossHealFlag == 1)
+                         if(this->BossHealFlag == 1)
                               boss1battle->bossHealAnimation(dt);
-                         else if(this->BossChargeFlag == 1)
+                         if(this->BossChargeFlag == 1)
                               boss1battle->bossChargeAnimation(dt);
-                         else if(this->BossTauntFlag == 1)
+                         if(this->BossTauntFlag == 1)
                               boss1battle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
                          boss1battle->bossResetAnimationPosition();
-                         this->nickATTACKANIMATEFLAG =0;
-                         this->BossAttackFlag = 0;
-                         this->BossHealFlag = 0;
-                         this->BossChargeFlag = 0;
-                         this->BossTauntFlag = 0;
+                         this->nickTAUNTANIMATEFLAG =0;
+                         if(this->BossAttackFlag == 1)
+                         {
+                              this->BossAttackFlag = 0;
+                              nicktakedamage(bossCurrentStrength);
+                         }
+                         else if(this->BossHealFlag == 1)
+                         {
+                              this->BossHealFlag = 0;
+                              bossHealHealth(5);
+                         }
+                         else if(this->BossChargeFlag ==1)
+                         {
+                              this->BossChargeFlag = 0;
+                              bossChargeStrength(2);
+                         }
+                         else if(this->BossTauntFlag ==1)
+                         {
+                              this->BossTauntFlag = 0;
+                              nickgottaunted(2);
+                         }
                     }
 
                }
 
           }
 
+          /*
           if(nickCurrentHealth == 0)
                std::cout << "go to game over state" << std::endl;
           if(bossCurrentHealth == 0)
-               std::cout << "go to next world" << std::endl;
+               std::cout << "go to next world" << std::endl;*/
+
+          if(bossCurrentHealth == 0)
+          {
+               this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
+               std::cout <<"go to game over state" <<std::endl; 
+
+          }
 
           
 
@@ -657,6 +735,8 @@ namespace GameEngine
     void BattleState1::bossgottaunted(int strength)
     {
         this-> bossCurrentStrength = this -> bossCurrentStrength - strength;
+        if(this->bossCurrentStrength < 0)
+          this->bossCurrentStrength = 0;
         std::string attack = bossgetCurrentStrength_string();
         this->_BossAttack.setString(attack);
         this->_BossAttack.setCharacterSize(18);

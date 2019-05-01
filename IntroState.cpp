@@ -56,11 +56,6 @@ namespace GameEngine
 				this->_data->machine.AddState(StateRef(new GameState(this->_data)), true);
 			}
 
-			if (this->_data->input.IsSpriteClicked(this->_okayButton, sf::Mouse::Left, this->_data->window))
-			{
-				std::cout << "Go To Game Screen" << std::endl;
-				this->_data->machine.AddState(StateRef(new GameState(this->_data)), true);
-			}
 		}
 	}
 

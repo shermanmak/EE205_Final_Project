@@ -135,6 +135,7 @@ namespace GameEngine
             _nickBattleSprite.setScale(3,3);
             //set this position if large nick
             _nickBattleSprite.setPosition(-100,350);
+            
             //reset animations if not fully completely
             this->source_attack.x = 0;
             this->source_charge.x = 0;

@@ -69,6 +69,7 @@ namespace GameEngine
                 void bossChargeStrength(int strength);
                 void bossgottaunted(int strength);
                 int bossRandomSpell();
+
                 int BossAttackFlag;
                 int BossHealFlag;
                 int BossChargeFlag;
@@ -88,7 +89,7 @@ namespace GameEngine
                 sf::Sprite _ChargeButton;
 
                 Boss1Battle *boss1battle;
-		            NickBattle *nickbattle;
+		        NickBattle *nickbattle;
                 
                 sf::Clock _clock;
 
@@ -102,6 +103,7 @@ namespace GameEngine
                 int bossHEALANIMATEFLAG;
                 int bossTAUNTANIMATEFLAG;
                 int bossCHARGEANIMATEFLAG;
+                
                 bool bossturnFLAG;
 
             
