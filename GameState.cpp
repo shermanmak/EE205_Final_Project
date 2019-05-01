@@ -36,6 +36,21 @@ namespace GameEngine
 		item1 = new Item1(_data);
 
 
+		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
+
+		this->_notificationFruit.setTexture(this->_data->assets.GetTexture("Find My Fruits"));
+
+		this->_notificationFruit.setPosition((SCREEN_WIDTH / 2) - (this->_notificationFruit.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationFruit.getGlobalBounds().height / 2));
+
+		this->_data->assets.LoadTexture("Goon 1 Notification", BOSS_NOTIFICATION_FILEPATH);
+
+		this->_notificationBoss1.setTexture(this->_data->assets.GetTexture("Goon 1 Notification"));
+
+		this->_notificationBoss1.setPosition((SCREEN_WIDTH / 2) - (this->_notificationBoss1.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationBoss1.getGlobalBounds().height / 2));
+
+		Boss1Flag = 0;
+		FruitFlag = 0;
+
     }
 
 	void GameState::HandleInput()
@@ -136,15 +151,17 @@ namespace GameEngine
 
 			std::cout << "Go To BattleState1" << std::endl;
 
-		  this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
+			Boss1Flag = 1;
 
 		}
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),npc1->GetSprite()))
 		{
-			nick->CollisionLeft();
+			nick->CollisionRight();
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
+
+			FruitFlag = 1;
 
 		}
 
@@ -177,6 +194,32 @@ namespace GameEngine
 		npc1->Draw();
 
 		item1->Draw();
+
+		//collision notifications
+		if(FruitFlag)
+		{
+			this->_data->window.draw(this->_notificationFruit);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
+			{
+				FruitFlag = 0;
+			}
+
+	  }
+
+
+		if(Boss1Flag)
+		{
+			this->_data->window.draw(this->_notificationBoss1);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationBoss1, sf::Mouse::Left, this->_data->window))
+			{
+				this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
+			}
+			
+		}
+
+
 
 		this->_data->window.display();
 	}

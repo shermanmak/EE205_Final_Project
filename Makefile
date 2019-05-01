@@ -1,4 +1,4 @@
-OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o Boss1.o Boss1Battle.o NPC1.o Item1.o Chad.o 
+OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o Boss1.o Boss1Battle.o NPC1.o Item1.o Chad.o GameOverState.o
 CXX = g++
 CXXFLAGS = -std=c++11
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
@@ -45,6 +45,8 @@ Collision.o: Collision.hpp
 Chad.o: Chad.hpp
 
 IntroChad.o: IntroChad.hpp DEFINITIONS.hpp Game.hpp
+
+GameOverState.o: GameOverState.hpp
 
 clean:
 	$(RM) game $(OBJS)

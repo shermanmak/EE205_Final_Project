@@ -28,6 +28,8 @@ namespace GameEngine
 		GameDataRef _data;
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
+		sf::Sprite _notificationFruit;
+		sf::Sprite _notificationBoss1;
 
 		Nick *nick;
 		Map *map;
@@ -36,7 +38,9 @@ namespace GameEngine
 		Item1 *item1;
 
 		Collision collision;
-		bool DownCollision;
+
+		bool FruitFlag;
+		bool Boss1Flag;
 
 
 	};
