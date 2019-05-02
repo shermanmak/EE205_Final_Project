@@ -67,7 +67,7 @@ namespace GameEngine
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 			{
 				//check for collision prior to movement
-				if(collision.CheckWallCollision_map1(nick->GetSprite()))
+				if(collision.CheckWallCollision_map2(nick->GetSprite()))
 				{
 					nick->CollisionUp();
 					nick->Animate();
@@ -76,7 +76,7 @@ namespace GameEngine
 				else
 					nick->MoveUp();
 					//check for collision after movement
-					if(collision.CheckWallCollision_map1(nick->GetSprite()))
+					if(collision.CheckWallCollision_map2(nick->GetSprite()))
 						nick->CollisionUp();
 					nick->Animate();
 					nick->StayonScreen();
@@ -85,7 +85,7 @@ namespace GameEngine
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 			{
 				//check for collision prior to movement
-				if(collision.CheckWallCollision_map1(nick->GetSprite()))
+				if(collision.CheckWallCollision_map2(nick->GetSprite()))
 				{
 					nick->CollisionDown();
 					nick->Animate();
@@ -94,7 +94,7 @@ namespace GameEngine
 				else
 					nick->MoveDown();
 					//check for collision after movement
-					if(collision.CheckWallCollision_map1(nick->GetSprite()))
+					if(collision.CheckWallCollision_map2(nick->GetSprite()))
 						nick->CollisionDown();
 					nick->Animate();
 					nick->StayonScreen();
@@ -104,7 +104,7 @@ namespace GameEngine
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 			{
 				//check for collision prior to movement
-				if(collision.CheckWallCollision_map1(nick->GetSprite()))
+				if(collision.CheckWallCollision_map2(nick->GetSprite()))
 				{
 					nick->CollisionLeft();
 					nick->Animate();
@@ -113,7 +113,7 @@ namespace GameEngine
 				else
 					nick->MoveLeft();
 					//check for collision after movement
-					if(collision.CheckWallCollision_map1(nick->GetSprite()))
+					if(collision.CheckWallCollision_map2(nick->GetSprite()))
 						nick->CollisionLeft();
 					nick->Animate();
 					nick->StayonScreen();
@@ -122,7 +122,7 @@ namespace GameEngine
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 			{
 				//check for collision prior to movement
-				if(collision.CheckWallCollision_map1(nick->GetSprite()))
+				if(collision.CheckWallCollision_map2(nick->GetSprite()))
 				{
 					nick->CollisionRight();
 					nick->Animate();
@@ -131,7 +131,7 @@ namespace GameEngine
 				else
 					nick->MoveRight();
 					//check for collision again after movement
-					if(collision.CheckWallCollision_map1(nick->GetSprite()))
+					if(collision.CheckWallCollision_map2(nick->GetSprite()))
 						nick->CollisionRight();
 					nick->Animate();
 					nick->StayonScreen();
