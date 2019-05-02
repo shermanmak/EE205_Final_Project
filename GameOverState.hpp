@@ -4,6 +4,7 @@
 #include "State.hpp"
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
+#include "NickBattle.hpp"
 
 namespace GameEngine
 {
@@ -17,9 +18,14 @@ namespace GameEngine
 		void Update(float dt);
 		void Draw(float dt);
 
+		int nickDEATHCOUNTER;
+		int nickDEATHFLAG;
+
 	private:
-		GameDataRef _data;		
+		GameDataRef _data;
 		sf::Texture _backgroundTexture;
 		sf::Sprite _background;
+
+		NickBattle *nickbattle;
 	};
 }

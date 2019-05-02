@@ -7,7 +7,7 @@
 
 namespace GameEngine
 {
-    class NickBattle 
+    class NickBattle
     {
         public:
 
@@ -19,7 +19,7 @@ namespace GameEngine
 
             void Draw();
 
-            //Health 
+            //Health
            // void setHealth(int health);
            // std::string getCurrentHealth_string();
            // int getCurrentHealth();
@@ -32,18 +32,22 @@ namespace GameEngine
             void NickAttackAnimation(float dt);
 
             void NickHealAnimation(float dt);
-            
+
             void NickTauntAnimation(float dt);
-            
+
             void NickChargeAnimation(float dt);
 
             void NickResetAnimationPosition();
-            
+
+            void NickDeathAnimation(float dt);
+
             sf::Vector2i source_attack;
 
             sf::Vector2i source_heal;
 
             sf::Vector2i source_taunt;
+
+              sf::Vector2i source_death;
 
             sf::Vector2i source_charge;
 
@@ -52,15 +56,15 @@ namespace GameEngine
             //int nickCurrentHealth;
 
             //int nickCurrentStrength;
-        
+
         private:
             GameDataRef _data;
 
             sf::Sprite _nickBattleSprite;
 
             sf::Clock _clock;
-            
-            
+
+
           //  sf::Text _NickHealth;
           //  sf::Text _NickAttack;
 

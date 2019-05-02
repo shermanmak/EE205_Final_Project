@@ -42,11 +42,11 @@ Map.o: Map.hpp DEFINITIONS.hpp Game.hpp
 
 Collision.o: Collision.hpp
 
-Chad.o: Chad.hpp
+Chad.o: DEFINITIONS.hpp Chad.hpp
 
 IntroChad.o: IntroChad.hpp DEFINITIONS.hpp Game.hpp
 
-GameOverState.o: GameOverState.hpp
+GameOverState.o: GameOverState.hpp NickBattle.hpp DEFINITIONS.hpp
 
 clean:
 	$(RM) game $(OBJS)
