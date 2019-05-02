@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+
 #include "DEFINITIONS.hpp"
 #include "Game.hpp"
 #include "string"
@@ -18,12 +19,12 @@ namespace GameEngine
 
             void Draw();
 
-           /* //Health 
+           /* //Health
             void bosssetHealth(int health);
             void bosstakeDamage(int damage);
             int bossgetCurrentHealth();
             std::string bossgetCurrentHealth_string();
-            
+
 
             //Strength
             void bosssetStrength(int strength);
@@ -36,13 +37,15 @@ namespace GameEngine
             void bossAttackAnimation(float dt);
 
             void bossHealAnimation(float dt);
-            
+
             void bossTauntAnimation(float dt);
-            
+
             void bossChargeAnimation(float dt);
 
+            void bossDeathAnimation(float dt);
+
             void bossResetAnimationPosition();
-            
+
             sf::Vector2i source_attack;
 
             sf::Vector2i source_heal;
@@ -55,7 +58,7 @@ namespace GameEngine
             int bossCurrentStrength;
             int turncount = 0;
 
-        
+
         private:
             GameDataRef _data;
 
@@ -67,6 +70,9 @@ namespace GameEngine
 
             sf::Text _BossHealth;
             sf::Text _BossAttack;
+
+
+
 
 
     };

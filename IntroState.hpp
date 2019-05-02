@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "Game.hpp"
 #include "IntroChad.hpp"
@@ -33,7 +34,11 @@ namespace GameEngine
 
 		//Chad *chad;
 
-		IntroChad *introchad;
+			IntroChad *introchad;
+
+			sf::Music _introsong;
+			sf::SoundBuffer _clickbuffer;
+			sf::Sound _clicksound;
 
 	};
 }
