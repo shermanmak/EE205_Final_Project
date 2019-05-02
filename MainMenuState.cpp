@@ -23,7 +23,28 @@ namespace GameEngine
 		this->_playButton.setTexture(this->_data->assets.GetTexture("Play Button"));
 
 		this->_playButton.setPosition((SCREEN_WIDTH / 2) - (this->_playButton.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_playButton.getGlobalBounds().height / 2));
-			
+
+		if(!_mainmenusong.openFromFile("Resources/music/MainMenuMusic.oga")){
+
+			std::cout << "No Music File: Main Menu" << std::endl;
+
+		}
+
+
+		//adjust song volume
+		_mainmenusong.play();
+		_mainmenusong.setLoop(true);
+		_mainmenusong.setVolume(20.f);
+
+		//loading interaction sound
+		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+
+		}
+
+		_clicksound.setBuffer(_clickbuffer);
+
 	}
 
 	void MainMenuState::HandleInput()
@@ -35,12 +56,15 @@ namespace GameEngine
 			if (sf::Event::Closed == event.type)
 			{
 				this->_data->window.close();
+				_mainmenusong.stop();
 			}
 
 			if (this->_data->input.IsSpriteClicked(this->_playButton, sf::Mouse::Left, this->_data->window))
 			{
+				_clicksound.play();
 				std::cout << "Go To Intro Screen" << std::endl;
 				this->_data->machine.AddState(StateRef(new IntroState(this->_data)), true);
+				_mainmenusong.stop();
 			}
 		}
 	}

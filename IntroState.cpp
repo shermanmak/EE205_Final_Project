@@ -31,13 +31,31 @@ namespace GameEngine
         this->_text.setString("Hello... My name is Nick! \nThe girl of my dreams left me \nfor her evil ex-boyfriend due to \nhis crazy stats and MATLAB wizadry.\nI am NO match for him!!! \nI'm on a mission to raise my stats \nso hopefully I can win her back. \nI'm trying to raise my kindness, love, \nstrength, and flirt abilities.");
         this->_text.setPosition((SCREEN_WIDTH/3), (SCREEN_HEIGHT/2.5));
 
-		//_data->assets.LoadTexture("Chad Image", CHAD_IMAGE_FILEPATH);
-		_data->assets.LoadTexture("Intro Chad Image", INTRO_CHAD_IMAGE_FILEPATH);
 
-		//chad = new Chad(_data);
-		introchad = new IntroChad(_data);
-		//_data->assets.LoadTexture("Princess Image", PRINCESS_IMAGE_FILEPATH);
-		//princess = new Princess(_data);
+				_data->assets.LoadTexture("Intro Chad Image", INTRO_CHAD_IMAGE_FILEPATH);
+
+				introchad = new IntroChad(_data);
+				if(!_introsong.openFromFile("Resources/music/IntroSong.ogg")){
+
+					std::cout << "No Music File: Main Menu" << std::endl;
+
+				}
+
+
+		//adjust song volume
+		_introsong.play();
+		_introsong.setLoop(true);
+		_introsong.setVolume(20.f);
+
+		//loading interaction sound
+		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+
+		}
+
+		_clicksound.setBuffer(_clickbuffer);
+
 	}
 	void IntroState::HandleInput()
 	{
@@ -48,12 +66,15 @@ namespace GameEngine
 			if (sf::Event::Closed == event.type)
 			{
 				this->_data->window.close();
+				_introsong.stop();
 			}
 
       if (this->_data->input.IsSpriteClicked(this->_okayButton, sf::Mouse::Left, this->_data->window))
 			{
+				_clicksound.play();
 				std::cout << "Go To Game Screen" << std::endl;
 				this->_data->machine.AddState(StateRef(new GameState(this->_data)), true);
+				_introsong.stop();
 			}
 
 		}

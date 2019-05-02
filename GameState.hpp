@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
@@ -31,12 +32,20 @@ namespace GameEngine
 		sf::Sprite _notificationFruit;
 		sf::Sprite _notificationBoss1;
 
+		sf::Music	_song;
+		sf::SoundBuffer _clickbuffer;
+		sf::Sound _clicksound;
+
 		Nick *nick;
 		Map *map;
 		Boss1 *boss1;
 		NPC1 *npc1;
+	//	NPC2 *npc2;
 		Item1 *item1;
 		Item1 *item2;
+		Item1 *item3;
+		Item1 *item4;
+		Item1 *item5;
 
 		Collision collision;
 

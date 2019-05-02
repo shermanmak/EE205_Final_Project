@@ -35,6 +35,10 @@ namespace GameEngine
 		npc1 = new NPC1(_data);
 		item1 = new Item1(_data, 700, 0);
 		item2 = new Item1(_data, 600, 0);
+		item3 = new Item1(_data, 50, 500);
+		item3 = new Item1(_data, 200, 300);
+		item4 = new Item1(_data, 250, 500);
+		item5 = new Item1(_data, 50, 75);
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
 
@@ -51,6 +55,26 @@ namespace GameEngine
 		Boss1Flag = 0;
 		FruitFlag = 0;
 
+		//load music
+		if(!_song.openFromFile("Resources/music/gamestate1song.oga"))
+		{
+			std::cout << "No Music File: Main Menu" << std::endl;
+		}
+
+		//adjust song volume
+		_song.play();
+		_song.setLoop(true);
+		_song.setVolume(20.f);
+
+		//loading interaction sound
+		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+
+		}
+
+		_clicksound.setBuffer(_clickbuffer);
+
     }
 
 	void GameState::HandleInput()
@@ -61,6 +85,7 @@ namespace GameEngine
 			if (sf::Event::Closed == event.type)
 			{
 				this->_data->window.close();
+				_song.stop();
 			}
 			//if up key is press
 			if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
@@ -161,7 +186,7 @@ namespace GameEngine
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
 
-			if(nick->GetFruit()==2)
+			if(nick->GetFruit()==5)
 			{
 				npc1->endQuestPos(15*50,9*50-13);
 			}
@@ -175,7 +200,6 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item1->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
@@ -187,11 +211,41 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item2->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
 			item2->Obtained();
+
+			nick->FindFruit();
+
+		}
+
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item3->GetSprite()))
+		{
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item3->Obtained();
+
+			nick->FindFruit();
+
+		}
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item4->GetSprite()))
+		{
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item4->Obtained();
+
+			nick->FindFruit();
+
+		}
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item5->GetSprite()))
+		{
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item5->Obtained();
 
 			nick->FindFruit();
 
@@ -218,14 +272,21 @@ namespace GameEngine
 
 		item2->Draw();
 
+		item3->Draw();
+
+		item4->Draw();
+
+		item5->Draw();
+
 		//collision notifications
-		if(FruitFlag && nick->GetFruit() < 2)
+		if(FruitFlag && nick->GetFruit() < 5)
 		{
 			this->_data->window.draw(this->_notificationFruit);
 
 			if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
 			{
 				FruitFlag = 0;
+				_clicksound.play();
 			}
 
 	  }
@@ -237,7 +298,10 @@ namespace GameEngine
 
 			if(this->_data->input.IsSpriteClicked(this->_notificationBoss1, sf::Mouse::Left, this->_data->window))
 			{
+				_clicksound.play();
+				_song.stop();
 				this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
+
 			}
 
 		}
