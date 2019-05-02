@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
@@ -21,12 +22,12 @@ namespace GameEngine
 
                 void RandomAction();
                 void CheckifBattleisWon();
-                
+
                 void PrintNickHealth();
                 void PrintNickAttack();
                 void PrintBossHealth();
                 void PrintBossAttack();
-                
+
                 int bossANIMATIONCOUNTER = 0;
                 int nickANIMATIONCOUNTER = 0;
                 int turn = 0;
@@ -36,7 +37,7 @@ namespace GameEngine
                 int bossCurrentHealth;
                 int bossCurrentStrength;
 
-                //Nick Health 
+                //Nick Health
                 void nicksetHealth(int health);
                 std::string nickgetCurrentHealth_string();
                 int nickgetCurrentHealth();
@@ -52,11 +53,11 @@ namespace GameEngine
                 void nickChargeStrength(int strength);
                 void nickgottaunted(int strength);
 
-                //Health 
+                //Health
                 void bosssetHealth(int health);
                 int bossgetCurrentHealth();
                 std::string bossgetCurrentHealth_string();
-                
+
                 //Strength
                 void bosssetStrength(int strength);
                 int bossgetCurrentStrength();
@@ -70,27 +71,28 @@ namespace GameEngine
                 void bossgottaunted(int strength);
                 int bossRandomSpell();
 
+                int BossChargeFlag;
                 int BossAttackFlag;
                 int BossHealFlag;
-                int BossChargeFlag;
                 int BossTauntFlag;
 
 
-            
             private:
-                GameDataRef _data;	
+                GameDataRef _data;
                 sf::Texture _battlebackgroundTexture;
 		            sf::Sprite _battlebackground;
-                
+
                 //buttons
                 sf::Sprite _AttackButton;
                 sf::Sprite _HealButton;
                 sf::Sprite _TauntButton;
                 sf::Sprite _ChargeButton;
 
+                sf::Sprite _notificationWin;
+
                 Boss1Battle *boss1battle;
 		        NickBattle *nickbattle;
-                
+
                 sf::Clock _clock;
 
 
@@ -103,22 +105,23 @@ namespace GameEngine
                 int bossHEALANIMATEFLAG;
                 int bossTAUNTANIMATEFLAG;
                 int bossCHARGEANIMATEFLAG;
+
+                bool win;
                 
-                bool bossturnFLAG;
-
-            
-
-
                 sf::Sprite _statusBar;
 
-                
+
                 sf::Text _BossHealth;
                 sf::Text _BossAttack;
                 sf::Text _NickHealth;
                 sf::Text _NickAttack;
 
-		
+                sf::Music _song;
+              	sf::SoundBuffer _clickbuffer;
+          			sf::Sound _clicksound;
+
+
 
     };
-    
+
 }

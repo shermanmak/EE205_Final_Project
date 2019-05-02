@@ -42,10 +42,33 @@ namespace GameEngine
           this->_TauntButton.setTexture(this->_data->assets.GetTexture("Taunt Button"));
           this->_TauntButton.setPosition(600,700);
 
+          //Win notifications
+          this->_data->assets.LoadTexture("Win Notification", WIN_NOTIFICATION_FILEPATH);
+      		this->_notificationWin.setTexture(this->_data->assets.GetTexture("Win Notification"));
+      		this->_notificationWin.setPosition((SCREEN_WIDTH / 2) - (this->_notificationWin.getGlobalBounds().width / 2),
+      		(SCREEN_HEIGHT / 2) - (this->_notificationWin.getGlobalBounds().height / 2));
+          win = false;
+
           boss1battle = new Boss1Battle(_data);
           nickbattle = new NickBattle(_data);
 
-          //you win/lose icons
+          //music
+          if(!_song.openFromFile("Resources/music/Battle1.oga"))
+          {
+              std::cout << "No Music File: Main Menu" << std::endl;
+          }
+
+        //adjust song volume
+        _song.play();
+        _song.setLoop(true);
+        _song.setVolume(20.f);
+
+        //loading interaction sound
+        if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav"))
+        {
+          std::cout << "No Sound File: Menu Selection" << std::endl;
+        }
+        _clicksound.setBuffer(_clickbuffer);
 
 
           //Status Bar
@@ -122,13 +145,13 @@ namespace GameEngine
 			{
 				this->_data->window.close();
                     std::cout << "good-bye" << std::endl;
+                    _song.stop();
 			}
                //*******************************ATTACK***********************
                if (this->_data->input.IsSpriteClicked(this->_AttackButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Attack button was clicked" << std::endl;
-
+                    _clicksound.play();
                     this-> nickATTACKANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
 
@@ -174,8 +197,8 @@ namespace GameEngine
               else if (this->_data->input.IsSpriteClicked(this->_HealButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Attack button was clicked" << std::endl;
 
+                    _clicksound.play();
                     this-> nickHEALANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
 
@@ -221,13 +244,12 @@ namespace GameEngine
               else if (this->_data->input.IsSpriteClicked(this->_ChargeButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Attack button was clicked" << std::endl;
-
+                    _clicksound.play();
                     this-> nickCHARGEANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
 
                     //Charge Strength
-                    nickChargeStrength(nickCurrentStrength);
+                    nickChargeStrength(5);
 
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
@@ -268,13 +290,12 @@ namespace GameEngine
              else if (this->_data->input.IsSpriteClicked(this->_TauntButton, sf::Mouse::Left, this->_data->window) && this->nickANIMATIONCOUNTER <= 0
                     && this-> bossANIMATIONCOUNTER <= 0)
 			{
-                    std::cout << "Attack button was clicked" << std::endl;
-
+                    _clicksound.play();
                     this-> nickTAUNTANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
 
                     //taunt boss
-                    bossgottaunted(nickCurrentStrength);
+                    bossgottaunted(5);
 
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
@@ -327,7 +348,7 @@ namespace GameEngine
                     nickbattle->NickAttackAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-                   std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
+                //   std::cout <<"Nick time: " <<nickANIMATIONCOUNTER << std::endl;
                }
                if(this->nickANIMATIONCOUNTER <= 0)
                {
@@ -337,7 +358,7 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                    //     std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
@@ -387,7 +408,7 @@ namespace GameEngine
                     nickbattle->NickHealAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-                    std::cout <<"Nick time Heal: " <<nickANIMATIONCOUNTER << std::endl;
+                //    std::cout <<"Nick time Heal: " <<nickANIMATIONCOUNTER << std::endl;
                }
 
                if(this->nickANIMATIONCOUNTER <= 0)
@@ -398,7 +419,7 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                    //     std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
@@ -447,10 +468,10 @@ namespace GameEngine
           {
                if(this->nickANIMATIONCOUNTER > 0)
                {
-                    nickbattle->NickAttackAnimation(dt);
+                    nickbattle->NickChargeAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-                   std::cout <<"Nick time Charge: " <<nickANIMATIONCOUNTER << std::endl;
+                //   std::cout <<"Nick time Charge: " <<nickANIMATIONCOUNTER << std::endl;
                }
                if(this->nickANIMATIONCOUNTER <= 0)
                {
@@ -460,7 +481,7 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                        // std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
@@ -512,7 +533,7 @@ namespace GameEngine
                     nickbattle->NickHealAnimation(dt);
 
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
-                    std::cout <<"Nick time Taunt: " <<nickANIMATIONCOUNTER << std::endl;
+              //      std::cout <<"Nick time Taunt: " <<nickANIMATIONCOUNTER << std::endl;
                }
 
                if(this->nickANIMATIONCOUNTER <= 0)
@@ -523,7 +544,7 @@ namespace GameEngine
                     if(this->bossANIMATIONCOUNTER > 0)
                     {
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
-                         std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
+                      //   std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
                               boss1battle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
@@ -564,16 +585,21 @@ namespace GameEngine
 
           }
 
-          /*
-          if(nickCurrentHealth == 0)
-               std::cout << "go to game over state" << std::endl;
-          if(bossCurrentHealth == 0)
-               std::cout << "go to next world" << std::endl;*/
+
 
           if(bossCurrentHealth == 0)
           {
-               this->_data->machine.AddState(StateRef(new GameState2(this->_data)), true);
-               std::cout <<"go to game over state" <<std::endl;
+
+            this->win = true;
+            this->bossANIMATIONCOUNTER = 0;
+               //this->_data->machine.AddState(StateRef(new GameState2(this->_data)), true);
+               //_song.stop();
+
+          }
+          if(nickCurrentHealth == 0)
+          {
+               this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
+               _song.stop();
 
           }
 
@@ -585,7 +611,7 @@ namespace GameEngine
      {
           this->_data->window.clear(sf::Color::Red);
 
-		this->_data->window.draw( this->_battlebackground );
+		        this->_data->window.draw( this->_battlebackground );
 
           this->_data->window.draw(this->_AttackButton);
           this->_data->window.draw(this->_HealButton);
@@ -597,14 +623,29 @@ namespace GameEngine
           this->_data->window.draw(_NickAttack);
           this->_data->window.draw(_BossAttack);
           this->_data->window.draw(_BossHealth);
-
           nickbattle->Draw();
-
           boss1battle->Draw();
 
-		this->_data->window.display();
+          if(this->win == true)
+          {
+            this->_data->window.draw(this->_notificationWin);
+            if(this->_data->input.IsSpriteClicked(this->_notificationWin, sf::Mouse::Left, this->_data->window))
+            {
+              _clicksound.play();
+              _song.stop();
+              this->_data->machine.AddState(StateRef(new GameState2(this->_data)), true);
+            }
+          }
+
+		      this->_data->window.display();
 
      }
+
+
+
+
+
+
 
      void BattleState1::CheckifBattleisWon()
      {

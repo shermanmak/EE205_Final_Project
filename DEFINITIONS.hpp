@@ -41,6 +41,7 @@
 #define GIRLFRIEND_IMAGE_FILEPATH "Resources/res/Girlfriend.png"
 #define BOSS_1_IMAGE_FILEPATH "Resources/res/Boss 1.png"
 #define NPC_1_IMAGE_FILEPATH "Resources/res/NPC 1.png"
+#define NPC_2_IMAGE_FILEPATH "Resources/res/NPC 2.png"
 #define ITEM_1_IMAGE_FILEPATH "Resources/res/Item 1.png"
 #define CHAD_IMAGE_FILEPATH "Resources/res/Chad.png"
 
@@ -64,6 +65,15 @@
 #define HEAL_BUTTON_FILEPATH "Resources/res/Heal Button.png"
 #define TAUNT_BUTTON_FILEPATH "Resources/res/Taunt Button.png"
 #define CHARGE_BUTTON_FILEPATH "Resources/res/Charge Button.png"
+#define WIN_NOTIFICATION_FILEPATH "Resources/res/win.png"
 
 //Status Bar
 #define STATUS_BAR_FILEPATH "Resources/res/Current Status.png"
+
+//Questions
+#define QUESTION_1_FILEPATH "Resources/res/Q1.png"
+#define ANSWER_1_FILEPATH "Resources/res/A1.png"
+#define ANSWER_2_FILEPATH "Resources/res/A2.png"
+#define ANSWER_3_FILEPATH "Resources/res/A3.png"
+#define THANK_YOU_FILEPATH "Resources/res/thanks.png"
+#define YOU_KIND_FILEPATH "Resources/res/kind.png"

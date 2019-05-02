@@ -35,12 +35,12 @@ namespace GameEngine
 				_data->assets.LoadTexture("Intro Chad Image", INTRO_CHAD_IMAGE_FILEPATH);
 
 				introchad = new IntroChad(_data);
-				if(!_introsong.openFromFile("Resources/music/IntroSong.ogg")){
+			if(!_introsong.openFromFile("Resources/music/IntroSong.ogg"))
+			{
 
 					std::cout << "No Music File: Main Menu" << std::endl;
 
-				}
-
+			}
 
 		//adjust song volume
 		_introsong.play();
@@ -48,7 +48,8 @@ namespace GameEngine
 		_introsong.setVolume(20.f);
 
 		//loading interaction sound
-		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav")){
+		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav"))
+		{
 
 			std::cout << "No Sound File: Menu Selection" << std::endl;
 
