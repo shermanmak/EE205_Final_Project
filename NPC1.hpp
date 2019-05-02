@@ -18,11 +18,15 @@ namespace GameEngine
 
             const sf::Sprite &GetSprite() const;
 
+            void endQuestPos(int positionX, int positionY);
+
 
         private:
             GameDataRef _data;
 
             sf::Sprite _npc1Sprite;
+
+
 
     };
 

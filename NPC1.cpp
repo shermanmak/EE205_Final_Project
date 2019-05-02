@@ -27,5 +27,9 @@ namespace GameEngine
         return _npc1Sprite;
     }
 
+    void NPC1::endQuestPos(int positionX, int positionY)
+    {
+        _npc1Sprite.setPosition(positionX, positionY);
+    }
 
 }

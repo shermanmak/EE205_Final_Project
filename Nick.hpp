@@ -44,9 +44,9 @@ namespace GameEngine
 
             sf::Vector2f position  = _nickSprite.getPosition();
 
-            void find_Fruit();
+            void FindFruit();
 
-            int get_Fruit();
+            int GetFruit();
 
         private:
             GameDataRef _data;

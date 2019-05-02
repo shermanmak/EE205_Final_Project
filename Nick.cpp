@@ -129,12 +129,12 @@ namespace GameEngine
         return _nickSprite;
     }
 
-    void Nick::find_Fruit()
+    void Nick::FindFruit()
     {
       this->fruit++;
     }
 
-    int Nick::get_Fruit()
+    int Nick::GetFruit()
     {
       return fruit;
     }

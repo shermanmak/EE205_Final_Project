@@ -161,7 +161,15 @@ namespace GameEngine
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
 
+			if(nick->GetFruit()==2)
+			{
+				npc1->endQuestPos(15*50,9*50-13);
+			}
+
+			else
+			{
 			FruitFlag = 1;
+			}
 
 		}
 
@@ -173,7 +181,7 @@ namespace GameEngine
 
 			item1->Obtained();
 
-			nick->find_Fruit();
+			nick->FindFruit();
 
 		}
 
@@ -185,7 +193,7 @@ namespace GameEngine
 
 			item2->Obtained();
 
-			nick->find_Fruit();
+			nick->FindFruit();
 
 		}
 
@@ -211,7 +219,7 @@ namespace GameEngine
 		item2->Draw();
 
 		//collision notifications
-		if(FruitFlag)
+		if(FruitFlag && nick->GetFruit() < 2)
 		{
 			this->_data->window.draw(this->_notificationFruit);
 
