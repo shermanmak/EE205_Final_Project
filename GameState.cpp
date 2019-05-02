@@ -208,7 +208,7 @@ namespace GameEngine
 
 		nick->Draw();
 
-		map->Draw();
+		map->Draw_1();
 
 		boss1->Draw();
 
