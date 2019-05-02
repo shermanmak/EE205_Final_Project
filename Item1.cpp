@@ -3,11 +3,11 @@
 namespace GameEngine
 {
 
-    Item1::Item1( GameDataRef data ) : _data( data )
+    Item1::Item1( GameDataRef data, int positionX, int positionY ) : _data( data )
     {
         _item1Sprite.setTexture(this->_data->assets.GetTexture("Item 1 Image"));
         _item1Sprite.setTextureRect(sf::IntRect(0*64, 0*64,64,64));
-        _item1Sprite.setPosition(700,0);
+        _item1Sprite.setPosition(positionX,positionY);
     }
 
     Item1::~Item1()

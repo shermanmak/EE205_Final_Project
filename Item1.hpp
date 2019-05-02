@@ -10,7 +10,7 @@ namespace GameEngine
     {
         public:
 
-            Item1( GameDataRef data );
+            Item1( GameDataRef data , int positionX, int positionY);
 
             ~Item1();
 
@@ -28,7 +28,7 @@ namespace GameEngine
 
             sf::Sprite _item1Sprite;
 
-            int possess;
+            int Count;
 
     };
 

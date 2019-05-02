@@ -21,12 +21,12 @@ namespace GameEngine
 
     void Nick::MoveDown()
     {
-       
+
         this->source.y = WALK_DOWN;
 		_nickSprite.move(0,7);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
        // std::cout << "moved down" << std::endl;
-       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl;
 
 
 
@@ -34,12 +34,12 @@ namespace GameEngine
 
     void Nick::MoveLeft()
     {
-       
+
         this->source.y = WALK_LEFT;
 		_nickSprite.move(-7,0);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
        // std::cout << "moved left" << std::endl;
-       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+       // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl;
 
 
 
@@ -47,12 +47,12 @@ namespace GameEngine
 
     void Nick::MoveRight()
     {
-       
+
         this->source.y = WALK_RIGHT;
 		_nickSprite.move(7,0);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
         //std::cout << "moved right" << std::endl;
-        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl;
 
 
 
@@ -60,12 +60,12 @@ namespace GameEngine
 
     void Nick::MoveUp()
     {
-        
+
         this->source.y = WALK_UP;
 		_nickSprite.move(0,-7);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
         //std::cout << "moved up" << std::endl;
-        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl; 
+        //std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl;
 
 
     }
@@ -129,6 +129,15 @@ namespace GameEngine
         return _nickSprite;
     }
 
+    void Nick::find_Fruit()
+    {
+      this->fruit++;
+    }
+
+    int Nick::get_Fruit()
+    {
+      return fruit;
+    }
 
     void Nick::Animate( )
     {
@@ -141,8 +150,8 @@ namespace GameEngine
 
                 _clock.restart();
 
-            
-        }       
+
+        }
     }
-   
+
 }

@@ -36,6 +36,7 @@ namespace GameEngine
 		Boss1 *boss1;
 		NPC1 *npc1;
 		Item1 *item1;
+		Item1 *item2;
 
 		Collision collision;
 

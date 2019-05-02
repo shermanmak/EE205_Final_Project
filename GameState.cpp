@@ -33,8 +33,8 @@ namespace GameEngine
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
 		npc1 = new NPC1(_data);
-		item1 = new Item1(_data);
-
+		item1 = new Item1(_data, 700, 0);
+		item2 = new Item1(_data, 600, 0);
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
 
@@ -173,6 +173,19 @@ namespace GameEngine
 
 			item1->Obtained();
 
+			nick->find_Fruit();
+
+		}
+
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item2->GetSprite()))
+		{
+			nick->CollisionLeft();
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item2->Obtained();
+
+			nick->find_Fruit();
 
 		}
 
@@ -195,6 +208,8 @@ namespace GameEngine
 
 		item1->Draw();
 
+		item2->Draw();
+
 		//collision notifications
 		if(FruitFlag)
 		{
@@ -216,7 +231,7 @@ namespace GameEngine
 			{
 				this->_data->machine.AddState(StateRef(new BattleState1(this->_data)), true);
 			}
-			
+
 		}
 
 

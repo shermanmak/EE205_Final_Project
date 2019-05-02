@@ -7,7 +7,7 @@
 
 namespace GameEngine
 {
-    class Nick 
+    class Nick
     {
         public:
 
@@ -43,9 +43,10 @@ namespace GameEngine
             sf::Vector2i source;
 
             sf::Vector2f position  = _nickSprite.getPosition();
-        
-           
 
+            void find_Fruit();
+
+            int get_Fruit();
 
         private:
             GameDataRef _data;
@@ -56,7 +57,7 @@ namespace GameEngine
 
             sf::Clock _movementClock;
 
-          
-           
+            int fruit;
+
     };
 }
