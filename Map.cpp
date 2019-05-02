@@ -39,7 +39,7 @@ namespace GameEngine
     {
       for(int j = 0; j < 16; j++ )
             {
-          if(TileLocation_Map1[i][j] != 0)
+          if(TileLocation_Map2[i][j] != 0)
                 {
                     _tilemap.setPosition(j*50, i*50);
                     _data ->window.draw(_tilemap);

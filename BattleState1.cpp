@@ -3,8 +3,8 @@
 #include <sstream>
 #include <iostream>
 #include "BattleState1.hpp"
-#include "GameOverState.hpp"
-//#include "GameState2.hpp"
+//#include "GameOverState.hpp"
+#include "GameState2.hpp"
 #include "string"
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,12 +41,12 @@ namespace GameEngine
           this->_data->assets.LoadTexture("Taunt Button", TAUNT_BUTTON_FILEPATH);
           this->_TauntButton.setTexture(this->_data->assets.GetTexture("Taunt Button"));
           this->_TauntButton.setPosition(600,700);
-          
+
           boss1battle = new Boss1Battle(_data);
           nickbattle = new NickBattle(_data);
-          
+
           //you win/lose icons
-          
+
 
           //Status Bar
           this-> _data->assets.LoadTexture("Current Status", STATUS_BAR_FILEPATH);
@@ -88,7 +88,7 @@ namespace GameEngine
             this->_BossHealth.setFont(this->_data->assets.GetFont("Dialogue"));
             this->_BossHealth.setColor(sf::Color::Black);
 
-            //sets health to start at 100 at each battle  
+            //sets health to start at 100 at each battle
           this->bossCurrentHealth = 100;
 
             std::string bosshealth = bossgetCurrentHealth_string();
@@ -97,7 +97,7 @@ namespace GameEngine
             this->_BossHealth.setPosition(165,300);
 
            this->bossCurrentStrength = 20;
-            
+
 
             this->_BossAttack.setFont(this->_data->assets.GetFont("Dialogue"));
             this->_BossAttack.setColor(sf::Color::Black);
@@ -106,9 +106,9 @@ namespace GameEngine
             this->_BossAttack.setString(bossattack);
             this->_BossAttack.setCharacterSize(18);
             this->_BossAttack.setPosition(165,320);
-          
 
-          
+
+
 
      }
 
@@ -131,10 +131,10 @@ namespace GameEngine
 
                     this-> nickATTACKANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
-                    
+
                     //deal damage to boss
                     bosstakeDamage(nickCurrentStrength);
-                    
+
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
@@ -178,10 +178,10 @@ namespace GameEngine
 
                     this-> nickHEALANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
-                    
+
                     //deal damage to boss
                     nickHealHealth(10);
-                    
+
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
@@ -225,10 +225,10 @@ namespace GameEngine
 
                     this-> nickCHARGEANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
-                    
+
                     //Charge Strength
                     nickChargeStrength(nickCurrentStrength);
-                    
+
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
@@ -272,10 +272,10 @@ namespace GameEngine
 
                     this-> nickTAUNTANIMATEFLAG = 1;
                     this-> nickANIMATIONCOUNTER = 50;
-                    
+
                     //taunt boss
                     bossgottaunted(nickCurrentStrength);
-                    
+
                     //boss choose random spell
                     this->bosschoice = bossRandomSpell();
                     std::cout << "Boss original choice: "<<this->bosschoice << std::endl;
@@ -311,7 +311,7 @@ namespace GameEngine
                     }
 
                }
-           
+
 
           }
 
@@ -389,7 +389,7 @@ namespace GameEngine
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
                     std::cout <<"Nick time Heal: " <<nickANIMATIONCOUNTER << std::endl;
                }
-                   
+
                if(this->nickANIMATIONCOUNTER <= 0)
                {
                     //this->nickHEALANIMATEFLAG = 0;
@@ -440,7 +440,7 @@ namespace GameEngine
           }
 
 
-          
+
 
           //CHARGE ANIMATION
           if(this->nickCHARGEANIMATEFLAG == 1)
@@ -499,10 +499,10 @@ namespace GameEngine
 
                }
 
-          }  
-                  
+          }
 
-     
+
+
 
           //TAUNT ANIMATION
           if(this->nickTAUNTANIMATEFLAG == 1)
@@ -514,6 +514,7 @@ namespace GameEngine
                     this->nickANIMATIONCOUNTER = this->nickANIMATIONCOUNTER -1;
                     std::cout <<"Nick time Taunt: " <<nickANIMATIONCOUNTER << std::endl;
                }
+
                if(this->nickANIMATIONCOUNTER <= 0)
                {
                     //this->nickATTACKANIMATEFLAG = 0;
@@ -571,12 +572,12 @@ namespace GameEngine
 
           if(bossCurrentHealth == 0)
           {
-               this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
-               std::cout <<"go to game over state" <<std::endl; 
+               this->_data->machine.AddState(StateRef(new GameState2(this->_data)), true);
+               std::cout <<"go to game over state" <<std::endl;
 
           }
 
-          
+
 
      }
 
@@ -591,7 +592,7 @@ namespace GameEngine
           this->_data->window.draw(this->_TauntButton);
           this->_data->window.draw(this->_ChargeButton);
           this->_data->window.draw(this->_statusBar);
-          
+
           this->_data->window.draw(_NickHealth);
           this->_data->window.draw(_NickAttack);
           this->_data->window.draw(_BossAttack);
@@ -607,7 +608,7 @@ namespace GameEngine
 
      void BattleState1::CheckifBattleisWon()
      {
-          
+
 
       //    if(Nick_health < 0)
       //         std::cout<< "you lose, go to game over state" << std::endl;
@@ -631,7 +632,7 @@ namespace GameEngine
         std::string Health_string = std::to_string(Health);
 
         return Health_string;
-    
+
     }
     int BattleState1::nickgetCurrentHealth()
     {
@@ -679,7 +680,7 @@ namespace GameEngine
         std::string Health_string = std::to_string(Health);
 
         return Health_string;
-    
+
     }
 
     //Strength setter
