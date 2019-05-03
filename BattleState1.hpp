@@ -107,7 +107,7 @@ namespace GameEngine
                 int bossCHARGEANIMATEFLAG;
 
                 bool win;
-                
+
                 sf::Sprite _statusBar;
 
 
