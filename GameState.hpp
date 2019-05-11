@@ -12,7 +12,7 @@
 #include "Boss1.hpp"
 #include "NPC1.hpp"
 #include "NPC2.hpp"
-#include "Item1.hpp"
+#include "Item.hpp"
 
 namespace GameEngine
 {
@@ -52,11 +52,11 @@ namespace GameEngine
 		Boss1 *boss1;
 		NPC1 *npc1;
 		NPC2 *npc2;
-		Item1 *item1;
-		Item1 *item2;
-		Item1 *item3;
-		Item1 *item4;
-		Item1 *item5;
+		Item *item1;
+		Item *item2;
+		Item *item3;
+		Item *item4;
+		Item *item5;
 
 		Collision collision;
 

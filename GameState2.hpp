@@ -10,7 +10,7 @@
 //#include "BattleState2.hpp"
 #include "Boss1.hpp"
 #include "NPC1.hpp"
-#include "Item1.hpp"
+#include "Item.hpp"
 #include "GameOverState.hpp"
 
 namespace GameEngine
@@ -36,8 +36,8 @@ namespace GameEngine
 		Map *map;
 		Boss1 *boss1;
 		NPC1 *npc1;
-		Item1 *item1;
-		Item1 *item2;
+		Item *item1;
+		Item *item2;
 
 		Collision collision;
 

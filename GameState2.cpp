@@ -28,14 +28,14 @@ namespace GameEngine
 
 		_data->assets.LoadTexture("NPC 1 Image", NPC_1_IMAGE_FILEPATH);
 
-		_data->assets.LoadTexture("Item 1 Image", ITEM_1_IMAGE_FILEPATH);
+		_data->assets.LoadTexture("Item 2 Image", ITEM_2_IMAGE_FILEPATH);
 
     nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
 		npc1 = new NPC1(_data);
-		item1 = new Item1(_data, 700, 0);
-		item2 = new Item1(_data, 600, 0);
+		item1 = new Item(_data, 700, 0, "Item 2 Image");
+		item2 = new Item(_data, 600, 0, "Item 2 Image");
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
 
