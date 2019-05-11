@@ -94,7 +94,7 @@ namespace GameEngine
     void Nick::CollisionUp()
     {
         this->source.y = WALK_UP;
-		_nickSprite.move(0,7);
+		    _nickSprite.move(0,7);
        // std::cout << "Collision Up" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 

@@ -35,31 +35,98 @@ namespace GameEngine
     nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
-		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 3 Image", FACE_LEFT);
-		npc2 = new NPC(_data, 3*50-10, 6*50, "NPC 4 Image", FACE_LEFT);
-		item1 = new Item(_data, 100, 500, "Item 2 Image");
-		item2 = new Item(_data, 150, 500, "Item 2 Image");
-		item3 = new Item(_data, 200, 500, "Item 2 Image");
-		item4 = new Item(_data, 250, 500, "Item 2 Image");
-		item5 = new Item(_data, 300, 500, "Item 2 Image");
-		item6 = new Item(_data, 350, 500, "Item 2 Image");
+		npc1 = new NPC(_data, 2*50-7, 6*50-10, "NPC 3 Image", FACE_FRONT);
+		npc2 = new NPC(_data, 13*50-10, 0*50+15, "NPC 4 Image", FACE_LEFT);
+		item1 = new Item(_data, 650, 250, "Item 2 Image");
+		item2 = new Item(_data, 720, 400, "Item 2 Image");
+		item3 = new Item(_data, 200, 450, "Item 2 Image");
+		item4 = new Item(_data, 250, 300, "Item 2 Image");
+		item5 = new Item(_data, 500, 300, "Item 2 Image");
+		item6 = new Item(_data, 450, 420, "Item 2 Image");
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
-
 		this->_notificationFruit.setTexture(this->_data->assets.GetTexture("Find My Fruits"));
-
 		this->_notificationFruit.setPosition((SCREEN_WIDTH / 2) - (this->_notificationFruit.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationFruit.getGlobalBounds().height / 2));
 
 		this->_data->assets.LoadTexture("Goon 1 Notification", BOSS_NOTIFICATION_FILEPATH);
-
 		this->_notificationBoss1.setTexture(this->_data->assets.GetTexture("Goon 1 Notification"));
-
 		this->_notificationBoss1.setPosition((SCREEN_WIDTH / 2) - (this->_notificationBoss1.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationBoss1.getGlobalBounds().height / 2));
+
+		this->_data->assets.LoadTexture("Thanks Notification", THANK_YOU_FILEPATH);
+		this->_notificationThanks.setTexture(this->_data->assets.GetTexture("Thanks Notification"));
+		this->_notificationThanks.setPosition((SCREEN_WIDTH / 2) - (this->_notificationThanks.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_notificationThanks.getGlobalBounds().height / 2));
+
+		this->_data->assets.LoadTexture("Kind Notification", YOU_KIND_FILEPATH);
+		this->_notificationYouKind.setTexture(this->_data->assets.GetTexture("Kind Notification"));
+		this->_notificationYouKind.setPosition((SCREEN_WIDTH / 2) - (this->_notificationYouKind.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_notificationYouKind.getGlobalBounds().height / 2));
+
+		this->_data->assets.LoadTexture("Question", QUESTION_1_FILEPATH);
+		this->_Question.setTexture(this->_data->assets.GetTexture("Question"));
+		this->_Question.setPosition((SCREEN_WIDTH / 2) - (this->_Question.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_Question.getGlobalBounds().height / 2)-150);
+
+		this->_data->assets.LoadTexture("Answer 1", ANSWER_1_FILEPATH);
+		this->_Answer1.setTexture(this->_data->assets.GetTexture("Answer 1"));
+		this->_Answer1.setPosition((SCREEN_WIDTH / 2) - (this->_Answer1.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_Answer1.getGlobalBounds().height / 2));
+
+		this->_data->assets.LoadTexture("Answer 2", ANSWER_2_FILEPATH);
+		this->_Answer2.setTexture(this->_data->assets.GetTexture("Answer 2"));
+		this->_Answer2.setPosition((SCREEN_WIDTH / 2) - (this->_Answer2.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_Answer2.getGlobalBounds().height / 2)+100);
+
+		this->_data->assets.LoadTexture("Answer 3", ANSWER_3_FILEPATH);
+		this->_Answer3.setTexture(this->_data->assets.GetTexture("Answer 3"));
+		this->_Answer3.setPosition((SCREEN_WIDTH / 2) - (this->_Answer3.getGlobalBounds().width / 2),
+		(SCREEN_HEIGHT / 2) - (this->_Answer3.getGlobalBounds().height / 2)+200);
 
 		Boss1Flag = 0;
 		FruitFlag = 0;
+		ThanksFlag = 0;
+		KindFlag = 0;
+		QuestionFlag = 0;
+		AnswerCorrectFlag = 0;
+		QuestionQuestFinish = 0;
+		FruitQuestFinish = 0;
 
-    }
+		//load music
+		if(!_song.openFromFile("Resources/music/gamestate1song.oga"))
+		{
+			std::cout << "No Music File: Main Menu" << std::endl;
+		}
+
+		//adjust song volume
+		_song.play();
+		_song.setLoop(true);
+		_song.setVolume(20.f);
+
+		//loading interaction sound
+		if(!_clickbuffer.loadFromFile("Resources/music/MenuSelectionClick.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+
+		}
+		_clicksound.setBuffer(_clickbuffer);
+
+
+		if(!_wrongbuffer.loadFromFile("Resources/music/wrong.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+
+		}
+
+		_wrongsound.setBuffer(_wrongbuffer);
+
+		if(!_correctbuffer.loadFromFile("Resources/music/correct.wav")){
+
+			std::cout << "No Sound File: Menu Selection" << std::endl;
+		}
+
+		_correctsound.setBuffer(_correctbuffer);
+
+  }
 
 	void GameState2::HandleInput()
 	{
@@ -165,28 +232,36 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),npc1->GetSprite()))
 		{
-			nick->CollisionRight();
+			nick->CollisionUp();
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
 
-			if(nick->GetFruit()==2)
+			if(nick->GetFruit()==6)
 			{
-				npc1->endQuestPos(15*50,9*50-13);
+				npc1->endQuestPos(2*50-7, 6*50-10);
 			}
 
 			else
 			{
-			FruitFlag = 1;
+				FruitFlag = 1;
 			}
 
 		}
 
-		//check item collision
-		//ran into problems with implementation into item class
-		//hard coded as quick fix
+		if(collision.CheckSpriteCollision(nick->GetSprite(),npc2->GetSprite()))
+		{
+			nick->CollisionRight();
+
+			if(QuestionQuestFinish == 0)
+			{
+				QuestionFlag = 1;
+			}
+			else
+				QuestionFlag = 0;
+		}
+
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item1->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
@@ -198,7 +273,6 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item2->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
@@ -210,11 +284,10 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item3->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
-			item2->Obtained();
+			item3->Obtained();
 
 			nick->FindFruit();
 
@@ -222,11 +295,10 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item4->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
-			item2->Obtained();
+			item4->Obtained();
 
 			nick->FindFruit();
 
@@ -234,11 +306,10 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item5->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
-			item2->Obtained();
+			item5->Obtained();
 
 			nick->FindFruit();
 
@@ -247,11 +318,10 @@ namespace GameEngine
 
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item6->GetSprite()))
 		{
-			nick->CollisionLeft();
 
 			std::cout << "Get item chee hoo" << std::endl;
 
-			item2->Obtained();
+			item6->Obtained();
 
 			nick->FindFruit();
 
@@ -299,6 +369,60 @@ namespace GameEngine
 
 	  }
 
+		if(QuestionFlag == 1)
+		{
+				this->_data->window.draw(this->_Question);
+				this->_data->window.draw(this->_Answer1);
+				this->_data->window.draw(this->_Answer2);
+				this->_data->window.draw(this->_Answer3);
+				if(this->_data->input.IsSpriteClicked(this->_Answer3, sf::Mouse::Left, this->_data->window))
+				{
+					QuestionFlag = 0;
+					KindFlag = 1;
+					//npc2->endQuestPos(5*50,5*50);
+					_correctsound.play();
+				}
+				if(this->_data->input.IsSpriteClicked(this->_Answer1, sf::Mouse::Left, this->_data->window))
+				{
+					QuestionFlag = 1;
+					_wrongsound.play();
+				}
+				if(this->_data->input.IsSpriteClicked(this->_Answer2, sf::Mouse::Left, this->_data->window))
+				{
+					QuestionFlag = 1;
+					_wrongsound.play();
+				}
+
+		}
+
+		if(KindFlag)
+		{
+			this->_data->window.draw(this->_notificationYouKind);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationYouKind, sf::Mouse::Left, this->_data->window))
+			{
+				_clicksound.play();
+				KindFlag = 0;
+				npc2->endQuestPos(15*50-10, 0*50+15);
+				QuestionQuestFinish = 1;
+
+			}
+		}
+
+		if(ThanksFlag)
+		{
+			this->_data->window.draw(this->_notificationThanks);
+
+			if(this->_data->input.IsSpriteClicked(this->_notificationThanks, sf::Mouse::Left, this->_data->window))
+			{
+				_clicksound.play();
+				ThanksFlag = 0;
+				FruitQuestFinish = 1;
+				npc1->endQuestPos(2*50-7, 3*50-10);
+				_clicksound.play();
+
+			}
+		}
 
 		if(Boss1Flag)
 		{

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "State.hpp"
 #include "Game.hpp"
 #include "DEFINITIONS.hpp"
@@ -31,6 +32,20 @@ namespace GameEngine
 		sf::Sprite _background;
 		sf::Sprite _notificationFruit;
 		sf::Sprite _notificationBoss1;
+		sf::Sprite _notificationThanks;
+		sf::Sprite _notificationYouKind;
+		sf::Sprite _Question;
+		sf::Sprite _Answer1;
+		sf::Sprite _Answer2;
+		sf::Sprite _Answer3;
+
+		sf::Music	_song;
+		sf::SoundBuffer _clickbuffer;
+		sf::Sound _clicksound;
+		sf::SoundBuffer _wrongbuffer;
+		sf::Sound _wrongsound;
+		sf::SoundBuffer _correctbuffer;
+		sf::Sound _correctsound;
 
 		Nick *nick;
 		Map *map;
@@ -46,6 +61,12 @@ namespace GameEngine
 
 		Collision collision;
 
+		bool QuestionQuestFinish;
+		bool FruitQuestFinish;
+		bool ThanksFlag;
+		bool KindFlag;
+		bool QuestionFlag;
+		bool AnswerCorrectFlag;
 		bool FruitFlag;
 		bool Boss1Flag;
 
