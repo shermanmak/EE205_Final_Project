@@ -6,13 +6,13 @@
 
 namespace GameEngine
 {
-    class NPC1
+    class NPC
     {
         public:
 
-            NPC1( GameDataRef data );
+            NPC( GameDataRef data, int xPos, int yPos, std::string npcImg, int spriteDirection );
 
-            ~NPC1();
+            ~NPC();
 
             void Draw();
 
@@ -24,7 +24,7 @@ namespace GameEngine
         private:
             GameDataRef _data;
 
-            sf::Sprite _npc1Sprite;
+            sf::Sprite _npcSprite;
 
 
 

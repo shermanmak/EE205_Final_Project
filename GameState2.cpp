@@ -33,9 +33,13 @@ namespace GameEngine
     nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
-		npc1 = new NPC1(_data);
-		item1 = new Item(_data, 700, 0, "Item 2 Image");
-		item2 = new Item(_data, 600, 0, "Item 2 Image");
+		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 1 Image", FACE_LEFT);
+		item1 = new Item(_data, 100, 500, "Item 2 Image");
+		item2 = new Item(_data, 150, 500, "Item 2 Image");
+		item3 = new Item(_data, 200, 500, "Item 2 Image");
+		item4 = new Item(_data, 250, 500, "Item 2 Image");
+		item5 = new Item(_data, 300, 500, "Item 2 Image");
+		item6 = new Item(_data, 350, 500, "Item 2 Image");
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
 
@@ -174,6 +178,9 @@ namespace GameEngine
 
 		}
 
+		//check item collision
+		//ran into problems with implementation into item class
+		//hard coded as quick fix
 		if(collision.CheckSpriteCollision(nick->GetSprite(),item1->GetSprite()))
 		{
 			nick->CollisionLeft();
@@ -198,6 +205,54 @@ namespace GameEngine
 
 		}
 
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item3->GetSprite()))
+		{
+			nick->CollisionLeft();
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item2->Obtained();
+
+			nick->FindFruit();
+
+		}
+
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item4->GetSprite()))
+		{
+			nick->CollisionLeft();
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item2->Obtained();
+
+			nick->FindFruit();
+
+		}
+
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item5->GetSprite()))
+		{
+			nick->CollisionLeft();
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item2->Obtained();
+
+			nick->FindFruit();
+
+		}
+
+
+		if(collision.CheckSpriteCollision(nick->GetSprite(),item6->GetSprite()))
+		{
+			nick->CollisionLeft();
+
+			std::cout << "Get item chee hoo" << std::endl;
+
+			item2->Obtained();
+
+			nick->FindFruit();
+
+		}
 
 	}
 
@@ -219,8 +274,16 @@ namespace GameEngine
 
 		item2->Draw();
 
+		item3->Draw();
+
+		item4->Draw();
+
+		item5->Draw();
+
+		item6->Draw();
+
 		//collision notifications
-		if(FruitFlag && nick->GetFruit() < 2)
+		if(FruitFlag && nick->GetFruit() < 6)
 		{
 			this->_data->window.draw(this->_notificationFruit);
 

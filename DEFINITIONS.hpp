@@ -46,6 +46,12 @@
 #define ITEM_2_IMAGE_FILEPATH "Resources/res/Chicken Nugget.png"
 #define CHAD_IMAGE_FILEPATH "Resources/res/Chad.png"
 
+//Spritesheet directions
+#define FACE_BACK 0
+#define FACE_LEFT 1
+#define FACE_FRONT 2
+#define FACE_RIGHT 3
+
 //Character movement animations
 #define WALK_UP 8;
 #define WALK_LEFT 9;

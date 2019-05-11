@@ -9,7 +9,7 @@
 #include "Collision.hpp"
 //#include "BattleState2.hpp"
 #include "Boss1.hpp"
-#include "NPC1.hpp"
+#include "NPC.hpp"
 #include "Item.hpp"
 #include "GameOverState.hpp"
 
@@ -35,9 +35,13 @@ namespace GameEngine
 		Nick *nick;
 		Map *map;
 		Boss1 *boss1;
-		NPC1 *npc1;
+		NPC *npc1;
 		Item *item1;
 		Item *item2;
+		Item *item3;
+		Item *item4;
+		Item *item5;
+		Item *item6;
 
 		Collision collision;
 
