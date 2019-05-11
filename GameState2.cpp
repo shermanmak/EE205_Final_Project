@@ -26,14 +26,17 @@ namespace GameEngine
 
 		_data->assets.LoadTexture("Tile", TILE_MAP_FILEPATH);
 
-		_data->assets.LoadTexture("NPC 1 Image", NPC_1_IMAGE_FILEPATH);
+		_data->assets.LoadTexture("NPC 3 Image", NPC_3_IMAGE_FILEPATH);
+
+		_data->assets.LoadTexture("NPC 4 Image", NPC_4_IMAGE_FILEPATH);
 
 		_data->assets.LoadTexture("Item 2 Image", ITEM_2_IMAGE_FILEPATH);
 
     nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
-		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 1 Image", FACE_LEFT);
+		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 3 Image", FACE_LEFT);
+		npc2 = new NPC(_data, 3*50-10, 6*50, "NPC 4 Image", FACE_LEFT);
 		item1 = new Item(_data, 100, 500, "Item 2 Image");
 		item2 = new Item(_data, 150, 500, "Item 2 Image");
 		item3 = new Item(_data, 200, 500, "Item 2 Image");
@@ -269,6 +272,8 @@ namespace GameEngine
 		boss1->Draw();
 
 		npc1->Draw();
+
+		npc2->Draw();
 
 		item1->Draw();
 

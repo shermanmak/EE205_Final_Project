@@ -36,6 +36,7 @@ namespace GameEngine
 		Map *map;
 		Boss1 *boss1;
 		NPC *npc1;
+		NPC *npc2;
 		Item *item1;
 		Item *item2;
 		Item *item3;

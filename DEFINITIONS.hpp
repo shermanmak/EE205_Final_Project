@@ -42,6 +42,8 @@
 #define BOSS_1_IMAGE_FILEPATH "Resources/res/Boss 1.png"
 #define NPC_1_IMAGE_FILEPATH "Resources/res/NPC 1.png"
 #define NPC_2_IMAGE_FILEPATH "Resources/res/NPC 2.png"
+#define NPC_3_IMAGE_FILEPATH "Resources/res/NPC 3.png"
+#define NPC_4_IMAGE_FILEPATH "Resources/res/NPC 4.png"
 #define ITEM_1_IMAGE_FILEPATH "Resources/res/Item 1.png"
 #define ITEM_2_IMAGE_FILEPATH "Resources/res/Chicken Nugget.png"
 #define CHAD_IMAGE_FILEPATH "Resources/res/Chad.png"
