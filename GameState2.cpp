@@ -236,9 +236,9 @@ namespace GameEngine
 
 			std::cout << "Talk to tiggle bitties" << std::endl;
 
-			if(nick->GetFruit()==6)
+			if(nick->GetFruit()==6 && FruitQuestFinish == 0)
 			{
-				npc1->endQuestPos(2*50-7, 6*50-10);
+				ThanksFlag = 1;
 			}
 
 			else
