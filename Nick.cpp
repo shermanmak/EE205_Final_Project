@@ -8,6 +8,7 @@ namespace GameEngine
     {
         _nickSprite.setTexture(this->_data->assets.GetTexture("Nick Image"));
         _nickSprite.setTextureRect(sf::IntRect(1*64, 10*64,64,64));
+        this->fruit=0;
     }
 
     void Nick::Draw()
@@ -23,7 +24,7 @@ namespace GameEngine
     {
 
         this->source.y = WALK_DOWN;
-		_nickSprite.move(0,7);
+		    _nickSprite.move(0,7);
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
        // std::cout << "moved down" << std::endl;
        // std::cout << "X =" << _nickSprite.getPosition().x << " Y = " << _nickSprite.getPosition().y << std::endl;
@@ -93,7 +94,7 @@ namespace GameEngine
     void Nick::CollisionUp()
     {
         this->source.y = WALK_UP;
-		_nickSprite.move(0,7);
+		    _nickSprite.move(0,7);
        // std::cout << "Collision Up" << std::endl;
         _nickSprite.setTextureRect(sf::IntRect(source.x*64, source.y*64,64,64));
 

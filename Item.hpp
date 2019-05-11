@@ -6,13 +6,13 @@
 
 namespace GameEngine
 {
-    class Item1
+    class Item
     {
         public:
 
-            Item1( GameDataRef data , int positionX, int positionY);
+            Item( GameDataRef data , int positionX, int positionY, std::string imgFile);
 
-            ~Item1();
+            ~Item();
 
             void Draw();
 
@@ -26,7 +26,7 @@ namespace GameEngine
         private:
             GameDataRef _data;
 
-            sf::Sprite _item1Sprite;
+            sf::Sprite _itemSprite;
 
             int Count;
 

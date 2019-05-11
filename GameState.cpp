@@ -34,14 +34,14 @@ namespace GameEngine
     nick = new Nick(_data);
 		map = new Map(_data);
 		boss1 = new Boss1(_data);
-		npc1 = new NPC1(_data);
-		npc2 = new NPC2(_data);
-		item1 = new Item1(_data, 700, 0);
-		item2 = new Item1(_data, 500, 75);
-		item3 = new Item1(_data, 50, 500);
-		item3 = new Item1(_data, 600, 300);
-		item4 = new Item1(_data, 250, 450);
-		item5 = new Item1(_data, 50, 75);
+		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 1 Image", FACE_LEFT);
+		npc2 = new NPC(_data, 3*50-10, 6*50, "NPC 2 Image", FACE_BACK);
+		item1 = new Item(_data, 700, 0, "Item 1 Image");
+		item2 = new Item(_data, 500, 75, "Item 1 Image");
+		item3 = new Item(_data, 50, 500, "Item 1 Image");
+		item3 = new Item(_data, 600, 300, "Item 1 Image");
+		item4 = new Item(_data, 250, 450, "Item 1 Image");
+		item5 = new Item(_data, 50, 75, "Item 1 Image");
 
 		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
 
@@ -239,11 +239,10 @@ namespace GameEngine
 		{
 			nick->CollisionRight();
 
-			std::cout << "Talk to tiggle bitties" << std::endl;
+			std::cout << "Talk to Tiggle Bitties" << std::endl;
 
 			if(nick->GetFruit()==5 && FruitQuestFinish == 0)
 			{
-
 				ThanksFlag = 1;
 			}
 
@@ -351,8 +350,9 @@ namespace GameEngine
 		//collision notifications
 		if(FruitFlag && nick->GetFruit() < 5)
 		{
-			std::cout << FruitFlag << std::endl;
+			std::cout << FruitFlag << "Fruit notification" << std::endl;
 			this->_data->window.draw(this->_notificationFruit);
+
 
 			if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
 			{

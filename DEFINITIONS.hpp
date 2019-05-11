@@ -42,8 +42,17 @@
 #define BOSS_1_IMAGE_FILEPATH "Resources/res/Boss 1.png"
 #define NPC_1_IMAGE_FILEPATH "Resources/res/NPC 1.png"
 #define NPC_2_IMAGE_FILEPATH "Resources/res/NPC 2.png"
+#define NPC_3_IMAGE_FILEPATH "Resources/res/NPC 3.png"
+#define NPC_4_IMAGE_FILEPATH "Resources/res/NPC 4.png"
 #define ITEM_1_IMAGE_FILEPATH "Resources/res/Item 1.png"
+#define ITEM_2_IMAGE_FILEPATH "Resources/res/Chicken Nugget.png"
 #define CHAD_IMAGE_FILEPATH "Resources/res/Chad.png"
+
+//Spritesheet directions
+#define FACE_BACK 0
+#define FACE_LEFT 1
+#define FACE_FRONT 2
+#define FACE_RIGHT 3
 
 //Character movement animations
 #define WALK_UP 8;
