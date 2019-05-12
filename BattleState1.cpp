@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include "BattleState1.hpp"
-//#include "GameOverState.hpp"
+#include "GameOverState.hpp"
 #include "GameState2.hpp"
 #include "string"
 #include <stdio.h>
@@ -22,7 +22,7 @@ namespace GameEngine
           //Background
           this->_data->assets.LoadTexture("Battle 1 Background", GAME_BATTLE_1_BACKGROUND_FILEPATH);
 
-		_battlebackground.setTexture(this->_data->assets.GetTexture("Battle 1 Background"));
+		      _battlebackground.setTexture(this->_data->assets.GetTexture("Battle 1 Background"));
 
           //characters
           _data ->assets.LoadTexture("Nick Battle Image", NICK_IMAGE_FILEPATH);
@@ -49,7 +49,7 @@ namespace GameEngine
       		(SCREEN_HEIGHT / 2) - (this->_notificationWin.getGlobalBounds().height / 2));
           win = false;
 
-          boss1battle = new BossBattle(_data);
+          boss1battle = new BossBattle(_data, "Boss 1 Battle Image");
           nickbattle = new NickBattle(_data);
 
           //music
@@ -112,7 +112,7 @@ namespace GameEngine
             this->_BossHealth.setColor(sf::Color::Black);
 
             //sets health to start at 100 at each battle
-          this->bossCurrentHealth = 100;
+            this->bossCurrentHealth = 100;
 
             std::string bosshealth = bossgetCurrentHealth_string();
             this->_BossHealth.setString(bosshealth);

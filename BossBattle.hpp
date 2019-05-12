@@ -13,7 +13,7 @@ namespace GameEngine
         public:
            // BossBattle(){}
 
-            BossBattle( GameDataRef data );
+            BossBattle( GameDataRef data, std::string bossbattleImg );
 
             ~BossBattle();
 

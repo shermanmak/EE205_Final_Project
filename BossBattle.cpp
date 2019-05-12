@@ -5,9 +5,9 @@
 namespace GameEngine
 {
 
-        BossBattle::BossBattle( GameDataRef data ) : _data( data )
+        BossBattle::BossBattle( GameDataRef data, std::string bossbattleImg ) : _data( data )
         {
-            _bossBattleSprite.setTexture(this->_data->assets.GetTexture("Boss 1 Battle Image"));
+            _bossBattleSprite.setTexture(this->_data->assets.GetTexture(bossbattleImg));
             _bossBattleSprite.setTextureRect(sf::IntRect(0*200, (21*64 + 2*192),200,200));
             _bossBattleSprite.setScale(3,3);
 

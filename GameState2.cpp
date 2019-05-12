@@ -3,9 +3,9 @@
 #include <sstream>
 #include <iostream>
 #include "GameState2.hpp"
-//#include "BattleState2.hpp"
+#include "BattleState2.hpp"
 #include "NickBattle.hpp"
-#include "GameOverState.hpp"
+//#include "GameOverState.hpp"
 
 namespace GameEngine
 {
@@ -431,7 +431,9 @@ namespace GameEngine
 
 			if(this->_data->input.IsSpriteClicked(this->_notificationBoss1, sf::Mouse::Left, this->_data->window))
 			{
-				this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
+				//must stop song for next state with song or crash
+				_song.stop();
+				this->_data->machine.AddState(StateRef(new BattleState2(this->_data)), true);
 			}
 
 		}

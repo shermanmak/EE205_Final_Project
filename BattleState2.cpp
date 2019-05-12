@@ -3,21 +3,20 @@
 #include <sstream>
 #include <iostream>
 #include "BattleState2.hpp"
-//#include "GameOverState.hpp"
-#include "GameState2.hpp"
+#include "GameOverState.hpp"
 #include "string"
 #include <stdio.h>
 #include <stdlib.h>
 
 namespace GameEngine
 {
-     BattleState1::BattleState1(GameDataRef data) : _data(data)
+     BattleState2::BattleState2(GameDataRef data) : _data(data)
      {
 
 
      }
 
-     void BattleState1::Init()
+     void BattleState2::Init()
      {
           //Background
           this->_data->assets.LoadTexture("Battle 1 Background", GAME_BATTLE_1_BACKGROUND_FILEPATH);
@@ -26,7 +25,7 @@ namespace GameEngine
 
           //characters
           _data ->assets.LoadTexture("Nick Battle Image", NICK_IMAGE_FILEPATH);
-          _data ->assets.LoadTexture("Boss 1 Battle Image", BOSS_1_IMAGE_FILEPATH);
+          _data ->assets.LoadTexture("Chad Battle Image", CHAD_BATTLE_IMAGE_FILEPATH);
 
           //controls
           this->_data->assets.LoadTexture("Attack Button", ATTACK_BUTTON_FILEPATH);
@@ -49,7 +48,7 @@ namespace GameEngine
       		(SCREEN_HEIGHT / 2) - (this->_notificationWin.getGlobalBounds().height / 2));
           win = false;
 
-          chadbattle = new BossBattle(_data);
+          chadbattle = new BossBattle(_data, "Chad Battle Image");
           nickbattle = new NickBattle(_data);
 
           //music
@@ -111,15 +110,15 @@ namespace GameEngine
             this->_BossHealth.setFont(this->_data->assets.GetFont("Dialogue"));
             this->_BossHealth.setColor(sf::Color::Black);
 
-            //sets health to start at 100 at each battle
-          this->bossCurrentHealth = 100;
+            //sets CHAD health to start at 200 at each battle
+          this->bossCurrentHealth = 200;
 
             std::string bosshealth = bossgetCurrentHealth_string();
             this->_BossHealth.setString(bosshealth);
             this->_BossHealth.setCharacterSize(18);
             this->_BossHealth.setPosition(165,300);
 
-           this->bossCurrentStrength = 20;
+           this->bossCurrentStrength = 50;
 
 
             this->_BossAttack.setFont(this->_data->assets.GetFont("Dialogue"));
@@ -135,7 +134,7 @@ namespace GameEngine
 
      }
 
-     void BattleState1::HandleInput()
+     void BattleState2::HandleInput()
      {
           sf::Event event;
 
@@ -338,7 +337,7 @@ namespace GameEngine
 
      }
 
-     void BattleState1::Update(float dt)
+     void BattleState2::Update(float dt)
      {
           //ATTACK ANIMATION
           if(this->nickATTACKANIMATEFLAG == 1)
@@ -607,11 +606,11 @@ namespace GameEngine
 
      }
 
-     void BattleState1::Draw(float dt)
+     void BattleState2::Draw(float dt)
      {
           this->_data->window.clear(sf::Color::Red);
 
-		        this->_data->window.draw( this->_battlebackground );
+		      this->_data->window.draw( this->_battlebackground );
 
           this->_data->window.draw(this->_AttackButton);
           this->_data->window.draw(this->_HealButton);
@@ -633,7 +632,7 @@ namespace GameEngine
             {
               _clicksound.play();
               _song.stop();
-              this->_data->machine.AddState(StateRef(new GameState2(this->_data)), true);
+              this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
             }
           }
 
@@ -647,7 +646,7 @@ namespace GameEngine
 
 
 
-     void BattleState1::CheckifBattleisWon()
+     void BattleState2::CheckifBattleisWon()
      {
 
 
@@ -659,14 +658,14 @@ namespace GameEngine
      }
 
      //Health  setter
-    void BattleState1::nicksetHealth(int health)
+    void BattleState2::nicksetHealth(int health)
     {
         this -> nickCurrentHealth = this->nickCurrentHealth+ health;
         if(this->nickCurrentHealth > 100) //hard setting max health to 100
             this->nickCurrentHealth = 100;
     }
     //Health Getter
-    std::string BattleState1::nickgetCurrentHealth_string()
+    std::string BattleState2::nickgetCurrentHealth_string()
     {
         int Health =  this-> nickCurrentHealth;
 
@@ -675,19 +674,19 @@ namespace GameEngine
         return Health_string;
 
     }
-    int BattleState1::nickgetCurrentHealth()
+    int BattleState2::nickgetCurrentHealth()
     {
         return this-> nickCurrentHealth;
     }
 
     //Strength setter
-    void BattleState1::nicksetStrength(int strength)
+    void BattleState2::nicksetStrength(int strength)
     {
         this -> nickCurrentStrength = strength;
     }
 
     //Strength getter string
-    std::string BattleState1::nickgetCurrentStrength_string()
+    std::string BattleState2::nickgetCurrentStrength_string()
     {
         int Strength = this-> nickCurrentStrength;
 
@@ -696,25 +695,25 @@ namespace GameEngine
         return Attack_string;
     }
 
-    int BattleState1::nickgetCurrentStrength()
+    int BattleState2::nickgetCurrentStrength()
     {
         return this -> nickCurrentStrength;
     }
 
     //Health  setter
-    void BattleState1::bosssetHealth(int health)
+    void BattleState2::bosssetHealth(int health)
     {
         this -> bossCurrentHealth = this->bossCurrentHealth+ health;
-        if(this->bossCurrentHealth > 100) //hard setting max health to 100
-            this->bossCurrentHealth = 100;
+        if(this->bossCurrentHealth > 200) //hard setting max health to 100
+            this->bossCurrentHealth = 200;
     }
     //Health Getter
-    int BattleState1::bossgetCurrentHealth()
+    int BattleState2::bossgetCurrentHealth()
     {
         return this-> bossCurrentHealth;
     }
     //Health Getter string
-    std::string BattleState1::bossgetCurrentHealth_string()
+    std::string BattleState2::bossgetCurrentHealth_string()
     {
         int Health =  this-> bossCurrentHealth;
 
@@ -725,18 +724,18 @@ namespace GameEngine
     }
 
     //Strength setter
-    void BattleState1::bosssetStrength(int strength)
+    void BattleState2::bosssetStrength(int strength)
     {
         this -> bossCurrentStrength = strength;
     }
 
     //Strength getter
-    int BattleState1::bossgetCurrentStrength()
+    int BattleState2::bossgetCurrentStrength()
     {
         return this-> bossCurrentStrength;
     }
     //Strength getter string
-    std::string BattleState1::bossgetCurrentStrength_string()
+    std::string BattleState2::bossgetCurrentStrength_string()
     {
         int Strength = this-> bossCurrentStrength;
 
@@ -745,7 +744,7 @@ namespace GameEngine
         return Attack_string;
     }
 
-    void BattleState1::bosstakeDamage(int damage)
+    void BattleState2::bosstakeDamage(int damage)
     {
         this-> bossCurrentHealth = this -> bossCurrentHealth - damage;
           if(this->bossCurrentHealth < 0)
@@ -756,7 +755,7 @@ namespace GameEngine
         this->_BossHealth.setPosition(165,300);
 
     }
-    void BattleState1::bossHealHealth(int heal)
+    void BattleState2::bossHealHealth(int heal)
     {
         this-> bossCurrentHealth = this -> bossCurrentHealth + heal;
         std::string health = bossgetCurrentHealth_string();
@@ -764,7 +763,7 @@ namespace GameEngine
         this->_BossHealth.setCharacterSize(18);
         this->_BossHealth.setPosition(165,300);
     }
-    void BattleState1::bossChargeStrength(int strength)
+    void BattleState2::bossChargeStrength(int strength)
     {
         this-> bossCurrentStrength = this -> bossCurrentStrength + strength;
         if(this->bossCurrentStrength < 0)
@@ -774,7 +773,7 @@ namespace GameEngine
         this->_BossAttack.setCharacterSize(18);
         this->_BossAttack.setPosition(165,320);
     }
-    void BattleState1::bossgottaunted(int strength)
+    void BattleState2::bossgottaunted(int strength)
     {
         this-> bossCurrentStrength = this -> bossCurrentStrength - strength;
         if(this->bossCurrentStrength < 0)
@@ -785,7 +784,7 @@ namespace GameEngine
         this->_BossAttack.setPosition(165,320);
     }
     //nick spells
-     void BattleState1::nicktakedamage(int damage)
+     void BattleState2::nicktakedamage(int damage)
     {
         this-> nickCurrentHealth = this -> nickCurrentHealth - damage;
         std::string health = nickgetCurrentHealth_string();
@@ -794,7 +793,7 @@ namespace GameEngine
         this->_NickHealth.setPosition(155,240);
 
     }
-    void BattleState1::nickHealHealth(int heal)
+    void BattleState2::nickHealHealth(int heal)
     {
         this-> nickCurrentHealth = this -> nickCurrentHealth + heal;
         std::string health = bossgetCurrentHealth_string();
@@ -802,7 +801,7 @@ namespace GameEngine
         this->_NickHealth.setCharacterSize(18);
         this->_NickHealth.setPosition(155,240);
     }
-    void BattleState1::nickChargeStrength(int strength)
+    void BattleState2::nickChargeStrength(int strength)
     {
         this-> nickCurrentStrength = this -> nickCurrentStrength + strength;
         std::string attack = nickgetCurrentStrength_string();
@@ -810,7 +809,7 @@ namespace GameEngine
         this->_NickAttack.setCharacterSize(18);
         this->_NickAttack.setPosition(155,260);
     }
-    void BattleState1::nickgottaunted(int strength)
+    void BattleState2::nickgottaunted(int strength)
     {
         this-> nickCurrentStrength = this -> nickCurrentStrength - strength;
         if(this->nickCurrentStrength < 0)
@@ -821,7 +820,7 @@ namespace GameEngine
         this->_NickAttack.setPosition(155,260);
     }
 
-    int BattleState1::bossRandomSpell()
+    int BattleState2::bossRandomSpell()
     {
          int spell = rand() % 4 +1;
          while(spell > 4 || spell <= 0)

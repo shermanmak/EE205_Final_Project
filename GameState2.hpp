@@ -8,11 +8,11 @@
 #include "Nick.hpp"
 #include "Map.hpp"
 #include "Collision.hpp"
-//#include "BattleState2.hpp"
+#include "BattleState2.hpp"
 #include "Boss.hpp"
 #include "NPC.hpp"
 #include "Item.hpp"
-#include "GameOverState.hpp"
+//#include "GameOverState.hpp"
 
 namespace GameEngine
 {
