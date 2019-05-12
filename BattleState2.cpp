@@ -4,6 +4,7 @@
 #include <iostream>
 #include "BattleState2.hpp"
 #include "GameOverState.hpp"
+#include "GameWinState.hpp"
 #include "string"
 #include <stdio.h>
 #include <stdlib.h>
@@ -632,7 +633,7 @@ namespace GameEngine
             {
               _clicksound.play();
               _song.stop();
-              this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
+              this->_data->machine.AddState(StateRef(new GameWinState(this->_data)), true);
             }
           }
 
