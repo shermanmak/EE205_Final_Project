@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o GameState2.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o BattleState2.o Boss.o BossBattle.o NPC.o Item.o Chad.o GameOverState.o
-=======
-OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o GameState2.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o Boss1.o Boss1Battle.o NPC1.o NPC2.o Item1.o Chad.o GameOverState.o GameWinState.o
->>>>>>> 7d0f3ddded1af8c6636aa5b1a476c9f2a5b0b3a2
+OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o GameState2.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o BattleState2.o Boss.o BossBattle.o NPC.o Item.o Chad.o GameOverState.o GameWinState.o
+
 CXX = g++
 CXXFLAGS = -std=c++11
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
@@ -32,7 +29,7 @@ GameState2.o: GameState2.hpp BattleState2.hpp DEFINITIONS.hpp State.hpp Game.hpp
 
 BattleState1.o: BattleState1.hpp GameState2.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp BossBattle.o
 
-BattleState2.o: BattleState2.hpp GameOverState.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp BossBattle.o
+BattleState2.o: BattleState2.hpp GameWinState.hpp GameOverState.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp BossBattle.o
 
 Nick.o: Nick.hpp DEFINITIONS.hpp Game.hpp
 
@@ -56,7 +53,7 @@ IntroChad.o: IntroChad.hpp DEFINITIONS.hpp Game.hpp
 
 GameOverState.o: GameOverState.hpp NickBattle.hpp DEFINITIONS.hpp
 
-GameWinState.o: GameWinState.hpp NickBattle.hpp
+GameWinState.o: GameWinState.hpp NickBattle.hpp DEFINITIONS.hpp
 
 clean:
 	$(RM) game $(OBJS)
