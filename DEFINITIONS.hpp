@@ -22,6 +22,7 @@
 
 //Game State
 #define GAME_BACKGROUND_FILEPATH "Resources/res/Game Background.png"
+#define GAME_WIN_BACKGROUND_FILEPATH "Resources/res/Game Win Background.png"
 
 //NPC Functionality
 #define BOSS_NOTIFICATION_FILEPATH "Resources/res/Encountered Goons.png"

@@ -1,4 +1,8 @@
 # EE205_Final_Project
+For Chris:
+$make game
+$./game
+
 
 This is our final project for EE205: Object-Oriented Programming (C++)
 Team 8: Carissa Nakao, Sherman Mak, Matthew Sahara
