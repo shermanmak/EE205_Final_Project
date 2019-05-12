@@ -22,7 +22,7 @@ namespace GameEngine
 
     _data ->assets.LoadTexture("Nick Image", NICK_IMAGE_FILEPATH);
 
-		_data ->assets.LoadTexture("Boss 1 Image", BOSS_1_IMAGE_FILEPATH);
+		_data ->assets.LoadTexture("Chad Image", CHAD_IMAGE_FILEPATH);
 
 		_data->assets.LoadTexture("Tile", TILE_MAP_FILEPATH);
 
@@ -34,7 +34,7 @@ namespace GameEngine
 
     nick = new Nick(_data);
 		map = new Map(_data);
-		boss1 = new Boss1(_data);
+		boss1 = new Boss1(_data, "Chad Image");
 		npc1 = new NPC(_data, 2*50-7, 6*50-10, "NPC 3 Image", FACE_FRONT);
 		npc2 = new NPC(_data, 13*50-10, 0*50+15, "NPC 4 Image", FACE_LEFT);
 		item1 = new Item(_data, 650, 250, "Item 2 Image");
@@ -44,12 +44,12 @@ namespace GameEngine
 		item5 = new Item(_data, 500, 300, "Item 2 Image");
 		item6 = new Item(_data, 450, 420, "Item 2 Image");
 
-		this->_data->assets.LoadTexture("Find My Fruits", NPC_NOTIFICATION_1_FILEPATH);
-		this->_notificationFruit.setTexture(this->_data->assets.GetTexture("Find My Fruits"));
+		this->_data->assets.LoadTexture("Find My Nuggets", NPC_NOTIFICATION_2_FILEPATH);
+		this->_notificationFruit.setTexture(this->_data->assets.GetTexture("Find My Nuggets"));
 		this->_notificationFruit.setPosition((SCREEN_WIDTH / 2) - (this->_notificationFruit.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationFruit.getGlobalBounds().height / 2));
 
-		this->_data->assets.LoadTexture("Goon 1 Notification", BOSS_NOTIFICATION_FILEPATH);
-		this->_notificationBoss1.setTexture(this->_data->assets.GetTexture("Goon 1 Notification"));
+		this->_data->assets.LoadTexture("Chad Notification", CHAD_BOSS_NOTIFICATION_FILEPATH);
+		this->_notificationBoss1.setTexture(this->_data->assets.GetTexture("Chad Notification"));
 		this->_notificationBoss1.setPosition((SCREEN_WIDTH / 2) - (this->_notificationBoss1.getGlobalBounds().width / 2), (SCREEN_HEIGHT / 2) - (this->_notificationBoss1.getGlobalBounds().height / 2));
 
 		this->_data->assets.LoadTexture("Thanks Notification", THANK_YOU_FILEPATH);
@@ -57,28 +57,28 @@ namespace GameEngine
 		this->_notificationThanks.setPosition((SCREEN_WIDTH / 2) - (this->_notificationThanks.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_notificationThanks.getGlobalBounds().height / 2));
 
-		this->_data->assets.LoadTexture("Kind Notification", YOU_KIND_FILEPATH);
-		this->_notificationYouKind.setTexture(this->_data->assets.GetTexture("Kind Notification"));
+		this->_data->assets.LoadTexture("Wise Notification", YOU_WISE_FILEPATH);
+		this->_notificationYouKind.setTexture(this->_data->assets.GetTexture("Wise Notification"));
 		this->_notificationYouKind.setPosition((SCREEN_WIDTH / 2) - (this->_notificationYouKind.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_notificationYouKind.getGlobalBounds().height / 2));
 
-		this->_data->assets.LoadTexture("Question", QUESTION_1_FILEPATH);
-		this->_Question.setTexture(this->_data->assets.GetTexture("Question"));
+		this->_data->assets.LoadTexture("Question2", QUESTION_2_FILEPATH);
+		this->_Question.setTexture(this->_data->assets.GetTexture("Question2"));
 		this->_Question.setPosition((SCREEN_WIDTH / 2) - (this->_Question.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_Question.getGlobalBounds().height / 2)-150);
 
-		this->_data->assets.LoadTexture("Answer 1", ANSWER_1_FILEPATH);
-		this->_Answer1.setTexture(this->_data->assets.GetTexture("Answer 1"));
+		this->_data->assets.LoadTexture("Answer 2.1", ANSWER_2_1_FILEPATH);
+		this->_Answer1.setTexture(this->_data->assets.GetTexture("Answer 2.1"));
 		this->_Answer1.setPosition((SCREEN_WIDTH / 2) - (this->_Answer1.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_Answer1.getGlobalBounds().height / 2));
 
-		this->_data->assets.LoadTexture("Answer 2", ANSWER_2_FILEPATH);
-		this->_Answer2.setTexture(this->_data->assets.GetTexture("Answer 2"));
+		this->_data->assets.LoadTexture("Answer 2.2", ANSWER_2_2_FILEPATH);
+		this->_Answer2.setTexture(this->_data->assets.GetTexture("Answer 2.2"));
 		this->_Answer2.setPosition((SCREEN_WIDTH / 2) - (this->_Answer2.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_Answer2.getGlobalBounds().height / 2)+100);
 
-		this->_data->assets.LoadTexture("Answer 3", ANSWER_3_FILEPATH);
-		this->_Answer3.setTexture(this->_data->assets.GetTexture("Answer 3"));
+		this->_data->assets.LoadTexture("Answer 2.3", ANSWER_2_3_FILEPATH);
+		this->_Answer3.setTexture(this->_data->assets.GetTexture("Answer 2.3"));
 		this->_Answer3.setPosition((SCREEN_WIDTH / 2) - (this->_Answer3.getGlobalBounds().width / 2),
 		(SCREEN_HEIGHT / 2) - (this->_Answer3.getGlobalBounds().height / 2)+200);
 
@@ -365,6 +365,7 @@ namespace GameEngine
 			if(this->_data->input.IsSpriteClicked(this->_notificationFruit, sf::Mouse::Left, this->_data->window))
 			{
 				FruitFlag = 0;
+				_clicksound.play();
 			}
 
 	  }
@@ -415,7 +416,7 @@ namespace GameEngine
 
 			if(this->_data->input.IsSpriteClicked(this->_notificationThanks, sf::Mouse::Left, this->_data->window))
 			{
-				_clicksound.play();
+			//	_clicksound.play();
 				ThanksFlag = 0;
 				FruitQuestFinish = 1;
 				npc1->endQuestPos(2*50-7, 3*50-10);

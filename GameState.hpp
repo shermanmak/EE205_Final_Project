@@ -9,7 +9,7 @@
 #include "Map.hpp"
 #include "Collision.hpp"
 #include "BattleState1.hpp"
-#include "Boss1.hpp"
+#include "Boss.hpp"
 #include "NPC.hpp"
 #include "Item.hpp"
 
