@@ -596,7 +596,7 @@ namespace GameEngine
                //_song.stop();
 
           }
-          if(nickCurrentHealth == 0)
+          if(nickCurrentHealth <= 0)
           {
                this->_data->machine.AddState(StateRef(new GameOverState(this->_data)), true);
                _song.stop();

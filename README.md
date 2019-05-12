@@ -5,7 +5,7 @@ For Chris:
 
 
 This is our final project for EE205: Object-Oriented Programming (C++)
-Team 8: Carissa Nakao, Sherman Mak, Matthew Sahara
+Team 8: Carissa Nakao, Sherman Mak, Matthew Sahara                           
 University of Hawaii at Manoa, Spring 2019
 
 Game information:
