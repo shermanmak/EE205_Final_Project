@@ -1,6 +1,6 @@
 # EE205_Final_Project
 For Chris:
-    1. $make game
+    1. $make game                       
     2. $./game
 
 
