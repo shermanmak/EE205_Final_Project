@@ -1,11 +1,11 @@
-#include "Boss1.hpp"
+#include "Boss.hpp"
 
 namespace GameEngine
 {
 
-    Boss1::Boss1( GameDataRef data ) : _data( data )
+    Boss1::Boss1( GameDataRef data, std::string ImageName ) : _data( data )
     {
-        _boss1Sprite.setTexture(this->_data->assets.GetTexture("Boss 1 Image"));
+        _boss1Sprite.setTexture(this->_data->assets.GetTexture(ImageName));
         _boss1Sprite.setTextureRect(sf::IntRect(0*64, 11*64,64,64));
         _boss1Sprite.setPosition(0,(800-64));
     }

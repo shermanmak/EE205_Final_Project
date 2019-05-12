@@ -33,7 +33,7 @@ namespace GameEngine
 
     nick = new Nick(_data);
 		map = new Map(_data);
-		boss1 = new Boss1(_data);
+		boss1 = new Boss1(_data, "Boss 1 Image");
 		npc1 = new NPC(_data, 12*50, 9*50-13, "NPC 1 Image", FACE_LEFT);
 		npc2 = new NPC(_data, 3*50-10, 6*50, "NPC 2 Image", FACE_BACK);
 		item1 = new Item(_data, 700, 0, "Item 1 Image");

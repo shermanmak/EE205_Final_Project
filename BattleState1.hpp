@@ -7,7 +7,7 @@
 #include "DEFINITIONS.hpp"
 #include "NickBattle.hpp"
 #include "Boss1Battle.hpp"
-#include "Boss1.hpp"
+#include "Boss.hpp"
 
 namespace GameEngine
 {
@@ -107,7 +107,7 @@ namespace GameEngine
                 int bossCHARGEANIMATEFLAG;
 
                 bool win;
-                
+
                 sf::Sprite _statusBar;
 
 

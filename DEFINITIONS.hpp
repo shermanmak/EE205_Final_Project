@@ -25,7 +25,9 @@
 
 //NPC Functionality
 #define BOSS_NOTIFICATION_FILEPATH "Resources/res/Encountered Goons.png"
+#define CHAD_BOSS_NOTIFICATION_FILEPATH "Resources/res/Encountered Chad.png"
 #define NPC_NOTIFICATION_1_FILEPATH "Resources/res/Find My Fruits.png"
+#define NPC_NOTIFICATION_2_FILEPATH "Resources/res/Find My Nuggets.png"
 
 //Battle State
 #define GAME_BATTLE_1_BACKGROUND_FILEPATH "Resources/res/Battle Background 1.png"
@@ -86,3 +88,8 @@
 #define ANSWER_3_FILEPATH "Resources/res/A3.png"
 #define THANK_YOU_FILEPATH "Resources/res/thanks.png"
 #define YOU_KIND_FILEPATH "Resources/res/kind.png"
+#define QUESTION_2_FILEPATH "Resources/res/Q2.png"
+#define ANSWER_2_1_FILEPATH "Resources/res/A2.1.png"
+#define ANSWER_2_2_FILEPATH "Resources/res/A2.2.png"
+#define ANSWER_2_3_FILEPATH "Resources/res/A2.3.png"
+#define YOU_WISE_FILEPATH "Resources/res/wise.png"

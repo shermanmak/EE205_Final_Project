@@ -10,8 +10,8 @@ namespace GameEngine
     {
         public:
 
-            Boss1( GameDataRef data );
-           
+            Boss1( GameDataRef data, std::string ImageName );
+
             ~Boss1();
 
             void Draw();

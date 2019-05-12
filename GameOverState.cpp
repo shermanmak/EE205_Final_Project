@@ -10,7 +10,7 @@ namespace GameEngine
 {
 	GameOverState::GameOverState(GameDataRef data) : _data(data)
 	{
-		nickDEATHCOUNTER=50;
+		nickDEATHCOUNTER=55;
 		nickDEATHFLAG=1;
 	}
 
@@ -48,7 +48,7 @@ namespace GameEngine
 
 							this->nickDEATHCOUNTER = this->nickDEATHCOUNTER -1;
 
-						 std::cout <<"Nick DEATH: " <<nickDEATHCOUNTER << std::endl;
+				//		 std::cout <<"Nick DEATH: " <<nickDEATHCOUNTER << std::endl;
 				 }
 				 if(this->nickDEATHCOUNTER == 0)
 				 {
