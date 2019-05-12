@@ -1,18 +1,18 @@
-#include "Boss1Battle.hpp"
+#include "BossBattle.hpp"
 //#include <stdlib.h>
 #include <iostream>
 
 namespace GameEngine
 {
 
-        Boss1Battle::Boss1Battle( GameDataRef data ) : _data( data )
+        BossBattle::BossBattle( GameDataRef data ) : _data( data )
         {
-            _boss1BattleSprite.setTexture(this->_data->assets.GetTexture("Boss 1 Battle Image"));
-            _boss1BattleSprite.setTextureRect(sf::IntRect(0*200, (21*64 + 2*192),200,200));
-            _boss1BattleSprite.setScale(3,3);
+            _bossBattleSprite.setTexture(this->_data->assets.GetTexture("Boss 1 Battle Image"));
+            _bossBattleSprite.setTextureRect(sf::IntRect(0*200, (21*64 + 2*192),200,200));
+            _bossBattleSprite.setScale(3,3);
 
             //set this position if large boss
-            _boss1BattleSprite.setPosition(300,0);
+            _bossBattleSprite.setPosition(300,0);
 
            /* //status bar
             this->_data->assets.LoadFont("Dialogue", DIALOG_FONT_FILEPATH);
@@ -43,19 +43,19 @@ namespace GameEngine
 
         }
 
-        Boss1Battle::~Boss1Battle()
+        BossBattle::~BossBattle()
         {
 
         }
 
-        void Boss1Battle::Draw()
+        void BossBattle::Draw()
         {
-            _data ->window.draw(_boss1BattleSprite);
+            _data ->window.draw(_bossBattleSprite);
             _data ->window.draw(_BossAttack);
             _data ->window.draw(_BossHealth);
         }
 
-        void Boss1Battle::bossAttackAnimation(float dt)
+        void BossBattle::bossAttackAnimation(float dt)
         {
 
             if (_clock.getElapsedTime().asSeconds() > ( .7 / 5))
@@ -67,13 +67,13 @@ namespace GameEngine
                 {
 				    this->source_attack.x=0;
                 }
-                _boss1BattleSprite.setTextureRect(sf::IntRect(source_attack.x*192, source_attack.y,192,192));
-                _boss1BattleSprite.setPosition(300,0);
+                _bossBattleSprite.setTextureRect(sf::IntRect(source_attack.x*192, source_attack.y,192,192));
+                _bossBattleSprite.setPosition(300,0);
                 _clock.restart();
             }
        }
 
-       void Boss1Battle::bossHealAnimation(float dt)
+       void BossBattle::bossHealAnimation(float dt)
         {
             if (_clock.getElapsedTime().asSeconds() > ( .7 / 5))
             {
@@ -83,13 +83,13 @@ namespace GameEngine
                 {
 				    this->source_heal.x=0;
                 }
-                _boss1BattleSprite.setTextureRect(sf::IntRect(source_heal.x*64, source_heal.y*64,64,64));
-                _boss1BattleSprite.setPosition(500,200);
+                _bossBattleSprite.setTextureRect(sf::IntRect(source_heal.x*64, source_heal.y*64,64,64));
+                _bossBattleSprite.setPosition(500,200);
                 _clock.restart();
             }
        }
 
-       void Boss1Battle::bossChargeAnimation(float dt)
+       void BossBattle::bossChargeAnimation(float dt)
         {
             if (_clock.getElapsedTime().asSeconds() > ( .7 / 5))
             {
@@ -99,13 +99,13 @@ namespace GameEngine
                 {
 				    this->source_charge.x=0;
                 }
-                _boss1BattleSprite.setTextureRect(sf::IntRect(source_charge.x*64, source_charge.y*64,64,64));
-                _boss1BattleSprite.setPosition(500,200);
+                _bossBattleSprite.setTextureRect(sf::IntRect(source_charge.x*64, source_charge.y*64,64,64));
+                _bossBattleSprite.setPosition(500,200);
                 _clock.restart();
             }
        }
 
-       void Boss1Battle::bossTauntAnimation(float dt)
+       void BossBattle::bossTauntAnimation(float dt)
         {
             if (_clock.getElapsedTime().asSeconds() > ( .7 / 5))
             {
@@ -115,19 +115,19 @@ namespace GameEngine
                 {
 				    this->source_taunt.x=0;
                 }
-                _boss1BattleSprite.setTextureRect(sf::IntRect(source_taunt.x*64, source_taunt.y*64,64,64));
-                _boss1BattleSprite.setPosition(300,0);
-                _boss1BattleSprite.setPosition(500,200);
+                _bossBattleSprite.setTextureRect(sf::IntRect(source_taunt.x*64, source_taunt.y*64,64,64));
+                _bossBattleSprite.setPosition(300,0);
+                _bossBattleSprite.setPosition(500,200);
                 _clock.restart();
             }
        }
 
-    void Boss1Battle::bossResetAnimationPosition()
+    void BossBattle::bossResetAnimationPosition()
     {
-            _boss1BattleSprite.setTextureRect(sf::IntRect(0*200, (21*64 + 2*192),200,200));
-            _boss1BattleSprite.setScale(3,3);
+            _bossBattleSprite.setTextureRect(sf::IntRect(0*200, (21*64 + 2*192),200,200));
+            _bossBattleSprite.setScale(3,3);
             //set this position if large nick
-            _boss1BattleSprite.setPosition(300,0);
+            _bossBattleSprite.setPosition(300,0);
             //reset animations if not fully completely
             this->source_attack.x = 0;
             this->source_charge.x = 0;
@@ -136,7 +136,7 @@ namespace GameEngine
 
     }
 
-    void Boss1Battle::bossDeathAnimation(float dt)
+    void BossBattle::bossDeathAnimation(float dt)
      {
 
        if (_clock.getElapsedTime().asSeconds() > ( .7 / 5))
@@ -147,26 +147,26 @@ namespace GameEngine
            {
               this->source_taunt.x=0;
            }
-           _boss1BattleSprite.setTextureRect(sf::IntRect(source_taunt.x*64, source_taunt.y*64,64,64));
-           _boss1BattleSprite.setPosition(300,0);
+           _bossBattleSprite.setTextureRect(sf::IntRect(source_taunt.x*64, source_taunt.y*64,64,64));
+           _bossBattleSprite.setPosition(300,0);
            _clock.restart();
        }
     }
 
    /* //Health  setter
-    void Boss1Battle::setHealth(int health)
+    void BossBattle::setHealth(int health)
     {
         this -> bossCurrentHealth = this->bossCurrentHealth+ health;
         if(this->bossCurrentHealth > 100) //hard setting max health to 100
             this->bossCurrentHealth = 100;
     }
     //Health Getter
-    int Boss1Battle::getCurrentHealth()
+    int BossBattle::getCurrentHealth()
     {
         return this-> bossCurrentHealth;
     }
     //Health Getter string
-    std::string Boss1Battle::getCurrentHealth_string()
+    std::string BossBattle::getCurrentHealth_string()
     {
         int Health =  this-> bossCurrentHealth;
 
@@ -177,18 +177,18 @@ namespace GameEngine
     }
 
     //Strength setter
-    void Boss1Battle::setStrength(int strength)
+    void BossBattle::setStrength(int strength)
     {
         this -> bossCurrentStrength = strength;
     }
 
     //Strength getter
-    int Boss1Battle::getCurrentStrength()
+    int BossBattle::getCurrentStrength()
     {
         return this-> bossCurrentStrength;
     }
     //Strength getter string
-    std::string Boss1Battle::getCurrentStrength_string()
+    std::string BossBattle::getCurrentStrength_string()
     {
         int Strength = this-> bossCurrentStrength;
 
@@ -197,7 +197,7 @@ namespace GameEngine
         return Attack_string;
     }
 
-    void Boss1Battle::takeDamage(int damage)
+    void BossBattle::takeDamage(int damage)
     {
         this-> bossCurrentHealth = this -> bossCurrentHealth - damage;
         std::cout << "DEBUG " << this->bossCurrentHealth << std::endl;

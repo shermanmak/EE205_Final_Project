@@ -90,7 +90,7 @@ namespace GameEngine
 
                 sf::Sprite _notificationWin;
 
-                BossBattle *boss1battle;
+                BossBattle *chadbattle;
 		            NickBattle *nickbattle;
 
                 sf::Clock _clock;

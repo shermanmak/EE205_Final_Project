@@ -2,7 +2,7 @@
 
 #include <sstream>
 #include <iostream>
-#include "BattleState1.hpp"
+#include "BattleState2.hpp"
 //#include "GameOverState.hpp"
 #include "GameState2.hpp"
 #include "string"
@@ -22,7 +22,7 @@ namespace GameEngine
           //Background
           this->_data->assets.LoadTexture("Battle 1 Background", GAME_BATTLE_1_BACKGROUND_FILEPATH);
 
-		_battlebackground.setTexture(this->_data->assets.GetTexture("Battle 1 Background"));
+		      _battlebackground.setTexture(this->_data->assets.GetTexture("Battle 1 Background"));
 
           //characters
           _data ->assets.LoadTexture("Nick Battle Image", NICK_IMAGE_FILEPATH);
@@ -49,7 +49,7 @@ namespace GameEngine
       		(SCREEN_HEIGHT / 2) - (this->_notificationWin.getGlobalBounds().height / 2));
           win = false;
 
-          boss1battle = new BossBattle(_data);
+          chadbattle = new BossBattle(_data);
           nickbattle = new NickBattle(_data);
 
           //music
@@ -360,18 +360,18 @@ namespace GameEngine
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
                     //     std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
-                              boss1battle->bossAttackAnimation(dt);
+                              chadbattle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
-                              boss1battle->bossHealAnimation(dt);
+                              chadbattle->bossHealAnimation(dt);
                          if(this->BossChargeFlag == 1)
-                              boss1battle->bossChargeAnimation(dt);
+                              chadbattle->bossChargeAnimation(dt);
                          if(this->BossTauntFlag == 1)
-                              boss1battle->bossTauntAnimation(dt);
+                              chadbattle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
-                         boss1battle->bossResetAnimationPosition();
+                         chadbattle->bossResetAnimationPosition();
                          this->nickATTACKANIMATEFLAG =0;
                          if(this->BossAttackFlag == 1)
                          {
@@ -421,18 +421,18 @@ namespace GameEngine
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
                     //     std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
-                              boss1battle->bossAttackAnimation(dt);
+                              chadbattle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
-                              boss1battle->bossHealAnimation(dt);
+                              chadbattle->bossHealAnimation(dt);
                          if(this->BossChargeFlag == 1)
-                              boss1battle->bossChargeAnimation(dt);
+                              chadbattle->bossChargeAnimation(dt);
                          if(this->BossTauntFlag == 1)
-                              boss1battle->bossTauntAnimation(dt);
+                              chadbattle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
-                         boss1battle->bossResetAnimationPosition();
+                         chadbattle->bossResetAnimationPosition();
                          this->nickHEALANIMATEFLAG =0;
                          if(this->BossAttackFlag == 1)
                          {
@@ -483,18 +483,18 @@ namespace GameEngine
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
                         // std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
-                              boss1battle->bossAttackAnimation(dt);
+                              chadbattle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
-                              boss1battle->bossHealAnimation(dt);
+                              chadbattle->bossHealAnimation(dt);
                          if(this->BossChargeFlag == 1)
-                              boss1battle->bossChargeAnimation(dt);
+                              chadbattle->bossChargeAnimation(dt);
                          if(this->BossTauntFlag == 1)
-                              boss1battle->bossTauntAnimation(dt);
+                              chadbattle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
-                         boss1battle->bossResetAnimationPosition();
+                         chadbattle->bossResetAnimationPosition();
                          this->nickCHARGEANIMATEFLAG =0;
                          if(this->BossAttackFlag == 1)
                          {
@@ -546,18 +546,18 @@ namespace GameEngine
                          this->bossANIMATIONCOUNTER = this->bossANIMATIONCOUNTER -1;
                       //   std::cout << "Boss time: " <<bossANIMATIONCOUNTER << std::endl;
                          if(this->BossAttackFlag == 1)
-                              boss1battle->bossAttackAnimation(dt);
+                              chadbattle->bossAttackAnimation(dt);
                          if(this->BossHealFlag == 1)
-                              boss1battle->bossHealAnimation(dt);
+                              chadbattle->bossHealAnimation(dt);
                          if(this->BossChargeFlag == 1)
-                              boss1battle->bossChargeAnimation(dt);
+                              chadbattle->bossChargeAnimation(dt);
                          if(this->BossTauntFlag == 1)
-                              boss1battle->bossTauntAnimation(dt);
+                              chadbattle->bossTauntAnimation(dt);
 
                     }
                     if(this->bossANIMATIONCOUNTER <= 0)
                     {
-                         boss1battle->bossResetAnimationPosition();
+                         chadbattle->bossResetAnimationPosition();
                          this->nickTAUNTANIMATEFLAG =0;
                          if(this->BossAttackFlag == 1)
                          {
@@ -624,7 +624,7 @@ namespace GameEngine
           this->_data->window.draw(_BossAttack);
           this->_data->window.draw(_BossHealth);
           nickbattle->Draw();
-          boss1battle->Draw();
+          chadbattle->Draw();
 
           if(this->win == true)
           {

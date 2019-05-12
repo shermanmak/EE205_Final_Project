@@ -8,14 +8,14 @@
 
 namespace GameEngine
 {
-    class Boss1Battle
+    class BossBattle
     {
         public:
-           // Boss1Battle(){}
+           // BossBattle(){}
 
-            Boss1Battle( GameDataRef data );
+            BossBattle( GameDataRef data );
 
-            ~Boss1Battle();
+            ~BossBattle();
 
             void Draw();
 
@@ -62,7 +62,7 @@ namespace GameEngine
         private:
             GameDataRef _data;
 
-            sf::Sprite _boss1BattleSprite;
+            sf::Sprite _bossBattleSprite;
 
             sf::Clock _clock;
 
