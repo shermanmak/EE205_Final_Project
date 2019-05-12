@@ -1,5 +1,5 @@
 # EE205_Final_Project
-For Chris:                 
+For Chris (How to build project):                 
     1. $make game                       
     2. $./game
 

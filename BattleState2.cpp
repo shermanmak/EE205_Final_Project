@@ -89,7 +89,7 @@ namespace GameEngine
 
             this->_NickAttack.setFont(this->_data->assets.GetFont("Dialogue"));
             this->_NickAttack.setColor(sf::Color::Black);
-            if(battleswon == 0)
+            /*if(battleswon == 0)
             {
                 this->nickCurrentStrength = 20;
             }
@@ -100,7 +100,9 @@ namespace GameEngine
             if(battleswon == 2)
             {
                 this->nickCurrentStrength = 40;
-            }
+            }*/
+
+            this->nickCurrentStrength = 25;
            // std::cout << "DEBUG: NICK CURRENT STRENGTH AT CONSTRUCT" << nickCurrentStrength << std::endl;
             std::string nickattack = nickgetCurrentStrength_string();
             this->_NickAttack.setString(nickattack);
@@ -119,7 +121,7 @@ namespace GameEngine
             this->_BossHealth.setCharacterSize(18);
             this->_BossHealth.setPosition(165,300);
 
-           this->bossCurrentStrength = 50;
+           this->bossCurrentStrength = 45;
 
 
             this->_BossAttack.setFont(this->_data->assets.GetFont("Dialogue"));
@@ -705,7 +707,7 @@ namespace GameEngine
     void BattleState2::bosssetHealth(int health)
     {
         this -> bossCurrentHealth = this->bossCurrentHealth+ health;
-        if(this->bossCurrentHealth > 200) //hard setting max health to 100
+        if(this->bossCurrentHealth > 200) //hard setting max health to 200
             this->bossCurrentHealth = 200;
     }
     //Health Getter
