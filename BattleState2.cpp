@@ -587,7 +587,7 @@ namespace GameEngine
 
 
 
-          if(bossCurrentHealth == 0)
+          if(bossCurrentHealth <= 0)
           {
 
             this->win = true;

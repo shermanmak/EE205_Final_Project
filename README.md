@@ -14,7 +14,7 @@ Nick needs to raise his dating-stats before he is ready to take on the evil MATL
 We used SFML in conjunction with the new object-oriented programming techniques we learned throughout the semester.
 
 To run and play game:
-  1. Have unix based command line with C++ complier and SFML installed on OS.
+  1. Have Unix based command line with C++ complier and SFML installed on OS.
   2. Compile. (Enter command: make game)
   3. Execute. (Enter command: ./game)
 
