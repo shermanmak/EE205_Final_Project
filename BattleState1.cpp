@@ -3,7 +3,7 @@
 #include <sstream>
 #include <iostream>
 #include "BattleState1.hpp"
-//#include "GameOverState.hpp"
+#include "GameOverState.hpp"
 #include "GameState2.hpp"
 #include "string"
 #include <stdio.h>
