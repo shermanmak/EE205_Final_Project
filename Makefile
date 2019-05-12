@@ -1,4 +1,4 @@
-OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o GameState2.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o Boss.o Boss1Battle.o NPC.o Item.o Chad.o GameOverState.o
+OBJS = main.o Game.o SplashState.o AssetManager.o InputManager.o StateMachine.o MainMenuState.o IntroChad.o IntroState.o GameState.o GameState2.o Nick.o NickBattle.o Map.o Collision.o BattleState1.o BattleState2.o Boss.o BossBattle.o NPC.o Item.o Chad.o GameOverState.o
 CXX = g++
 CXXFLAGS = -std=c++11
 LDLIBS = -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
@@ -24,17 +24,19 @@ IntroState.o: IntroState.hpp GameState.hpp DEFINITIONS.hpp State.hpp Game.hpp Ch
 
 GameState.o: GameState.hpp BattleState1.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp Map.hpp Collision.hpp Boss.hpp NPC.hpp Item.hpp
 
-GameState2.o: GameState2.hpp GameOverState.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp Map.hpp Collision.hpp Boss.hpp NPC.hpp Item.hpp
+GameState2.o: GameState2.hpp BattleState2.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp Map.hpp Collision.hpp Boss.hpp NPC.hpp Item.hpp
 
-BattleState1.o: BattleState1.hpp GameState2.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp Boss1Battle.o
+BattleState1.o: BattleState1.hpp GameState2.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp BossBattle.o
+
+BattleState2.o: BattleState2.hpp GameOverState.hpp DEFINITIONS.hpp State.hpp Game.hpp Nick.hpp NickBattle.hpp Boss.hpp BossBattle.o
 
 Nick.o: Nick.hpp DEFINITIONS.hpp Game.hpp
 
-NickBattle.o: NickBattle.hpp DEFINITIONS.hpp Game.hpp Boss1Battle.hpp
+NickBattle.o: NickBattle.hpp DEFINITIONS.hpp Game.hpp BossBattle.hpp
 
 Boss.o: Boss.hpp DEFINITIONS.hpp Game.hpp
 
-Boss1Battle.o: Boss1Battle.hpp DEFINITIONS.hpp Game.hpp NickBattle.hpp
+BossBattle.o: BossBattle.hpp DEFINITIONS.hpp Game.hpp NickBattle.hpp
 
 NPC.o: NPC.hpp DEFINITIONS.hpp Game.hpp
 

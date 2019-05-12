@@ -11,10 +11,10 @@
 
 namespace GameEngine
 {
-    class BattleState1 : public State, public NickBattle
+    class BattleState2 : public State, public NickBattle
     {
             public:
-		            BattleState1(GameDataRef data);
+		            BattleState2(GameDataRef data);
                 void Init();
 		            void HandleInput();
                 void Update(float dt);
@@ -90,7 +90,7 @@ namespace GameEngine
 
                 sf::Sprite _notificationWin;
 
-                BossBattle *boss1battle;
+                BossBattle *chadbattle;
 		            NickBattle *nickbattle;
 
                 sf::Clock _clock;
